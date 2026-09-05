@@ -1,0 +1,26 @@
+
+1. var vs let vs const
+2. Primitive vs non primitive
+3. while vs do while             let a=10  
+4. == vs ===			  let b=5
+5. syntax for ternary operator   let c=a>b?"true": "false"
+6.break and continue
+7. this vs super
+8.push vs unshift
+9.pop vs shift
+10.syntax for arrow function   let arow= ()=>{} 
+13.callback
+14.slice vs splice
+15.split(""), trim()
+16.promise
+17.async and await
+18.race() vs any()
+19.iheritance
+20.is the multiple inheritance is possible in java or js? or Daimond ring problem?
+21.Abstraction
+22.encapsulation
+23.method overloading & method overidding
+
+
+
+
