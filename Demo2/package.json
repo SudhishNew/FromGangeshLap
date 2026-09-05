@@ -1,0 +1,19 @@
+{
+  "name": "demo2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@cucumber/cucumber": "^13.2.1",
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^26.2.0",
+    "allure-commandline": "^2.43.0",
+    "allure-cucumberjs": "^3.10.2",
+    "allure-js-commons": "^3.10.2"
+  }
+}

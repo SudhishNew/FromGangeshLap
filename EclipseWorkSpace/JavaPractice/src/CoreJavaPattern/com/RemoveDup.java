@@ -1,0 +1,27 @@
+package CoreJavaPattern.com;
+
+public class RemoveDup {
+
+	public static void main(String args[]) {
+		
+		String s="madam";
+	
+		char a[]=s.toCharArray();
+		String rev ="";
+		for(int i=a.length-1;i>=0;i--) {
+			
+			rev +=a[i];
+		}
+		
+		System.out.println(rev);
+		
+		if(s.equals(rev)) {
+			System.out.println("its a palinfrome");
+		}
+		else {
+			System.out.println("its not a palinfrome");
+		}
+	}
+	
+	
+}

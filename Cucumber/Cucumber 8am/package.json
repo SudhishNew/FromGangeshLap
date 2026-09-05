@@ -1,0 +1,21 @@
+{
+  "name": "cucumber-8am",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@cucumber/cucumber": "^13.2.0",
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.1.1",
+    "allure-commandline": "^2.43.0",
+    "allure-cucumberjs": "^3.10.2",
+    "allure-js-commons": "^3.10.2"
+  }
+}

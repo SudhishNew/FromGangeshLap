@@ -1,0 +1,22 @@
+package CoreJavaPattern.com;
+
+public class Prime {
+
+	public static void main(String[] args) {
+		int a=7;
+		int count=1;
+		for (int i = 1; i <=a; i++) {
+			if(a%i==0) {
+				count++;
+			}
+			
+		}
+		System.err.println(count);
+		if(count ==2) {
+			System.err.println("its prime");
+		}
+		else {
+			System.err.println("its not prime");
+		}
+	}
+}

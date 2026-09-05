@@ -1,0 +1,38 @@
+const { chromium } = require('playwright');
+
+(async () => {
+  const browser = await chromium.launch({ headless: true });
+  const page = await browser.newPage();
+  const email = `qa${Date.now()}@example.com`;
+  await page.goto('https://automationexercise.com/login', { waitUntil: 'domcontentloaded' });
+  await page.fill('input[data-qa="signup-name"]', 'QA Tester');
+  await page.fill('input[data-qa="signup-email"]', email);
+  await page.click('button[data-qa="signup-button"]');
+  await page.waitForTimeout(2000);
+  console.log('After signup heading:', await page.locator('body').innerText());
+  await page.fill('input[data-qa="password"]', 'P@ssw0rd123');
+  await page.locator('select[data-qa="days"]').selectOption('10');
+  await page.locator('select[data-qa="months"]').selectOption('January');
+  await page.locator('select[data-qa="years"]').selectOption('1995');
+  await page.locator('#id_gender1').check();
+  await page.fill('input[data-qa="first_name"]', 'QA');
+  await page.fill('input[data-qa="last_name"]', 'Tester');
+  await page.fill('input[data-qa="company"]', 'Demo Company');
+  await page.fill('input[data-qa="address"]', '123 Test Street');
+  await page.fill('input[data-qa="state"]', 'Test State');
+  await page.fill('input[data-qa="city"]', 'Test City');
+  await page.fill('input[data-qa="zipcode"]', '12345');
+  await page.fill('input[data-qa="mobile_number"]', '1234567890');
+  await page.click('button[data-qa="create-account"]');
+  await page.waitForTimeout(2000);
+  console.log('After create account body:', (await page.locator('body').innerText()).slice(0, 2000));
+  await page.locator('a[data-qa="continue-button"]').click();
+  await page.waitForTimeout(2000);
+  await page.goto('https://automationexercise.com/login', { waitUntil: 'domcontentloaded' });
+  console.log('URL after login goto', page.url());
+  console.log('HTML snippet', (await page.locator('body').innerText()).slice(0, 2000));
+  console.log('selector count', await page.locator('input[data-qa="login-email"]').count());
+  console.log('selector visible', await page.locator('input[data-qa="login-email"]').isVisible().catch(e => e.message));
+  console.log('all inputs', await page.locator('input').evaluateAll(els => els.map(e => ({ dataqa: e.getAttribute('data-qa'), name: e.name, placeholder: e.placeholder, type: e.type }))));
+  await browser.close();
+})().catch(err => { console.error(err); process.exit(1); });
