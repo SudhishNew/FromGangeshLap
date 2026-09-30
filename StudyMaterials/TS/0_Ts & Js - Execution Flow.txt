@@ -1,0 +1,18 @@
+
+Execution Flow (Important):
+Synchronous code --> Microtasks --> One macrotask --> Repeat
+
+Sychronous:
+   * Printing Statement 'console.log()'
+   * loops&Condion Statements
+   * objects
+   * classes
+   * Array & Tuples
+   * Error-Handling Basic 
+Micro:
+   * Promises
+   * Async/Await
+   * queueMicrotask()
+   * MutationObserver
+Macro:
+   * TimerMethods

@@ -1,0 +1,312 @@
+     Typscript - Syntax
+=================================================
+Variable:
+keyword variable :datatype = value
+-------------------------
+Ternary Operator:
+condition ? if-true : if-false;
+-----------------------
+If:
+If (condition)
+ {
+    code to be executed
+  }
+------------------------
+nested If:
+If (condition)
+ {
+  code to be executed
+    If (condition)
+      {
+      code to be executed
+ }
+------------------------
+If else:
+If (condition)
+ {
+   code to be executed
+ } else {
+    code to be executed
+   }
+---------------------------
+Else If:
+If (condition)
+ {
+  code to be executed
+    } else if (condition) {
+      code to be executed
+	} else {
+          code to be executed
+ 	 }
+----------------------------
+switch:
+switch(Expression)
+ {
+  case 1: statement;
+	  break;
+  case 2: statement;
+	  break;
+  default: statement;
+--------------------------------
+While Loop:
+let a: number = intialization ;
+while(condition) 
+ {
+  statement;
+  increment/decrement;
+   };
+-------------------------------
+Do-While Loop:
+let a: number = intialization ;
+do {
+  statement;
+  increment/decrement;
+ } while(condition);
+---------------------------
+For Loop: (can you break/continue in if inside loop)
+for (intialization; condition; increment/decrement) 
+ {
+  statement; 
+   }
+----------------------------------
+string Methods:
+let str :string = 'Data';
+console.log(str.method())
+------------------------------------
+Array & Methods:
+let arrayName :datatype [] = [element1,element2,elemnt3]
+let arrayName :Array <datatype> = [element1,element2,elemnt3]
+ArrayName.method()
+ArrayName.advanceMethod(()=>{})
+--------------------------------------
+Named Function:
+function functionName(parameter): returntype {
+   block of code
+     }
+functionName (argument);
+-----------------------------------------
+Nameless/Anonymous Function:
+let variable = function(parameter):
+    {
+      block of code
+    }
+variable (argument);
+----------------------------------------
+Arrow/Lambda Function:
+let variable = (parameter) => 
+  {
+    block of code
+    }
+variable ();
+---------------------------------------------
+Function Overloading:
+function add(a: number, b: number): number;
+function add(a: string, b: string): string;
+function add(a: type, b: type): any {
+  if (conditon)
+     {
+       statement;
+        } else {
+         statement;
+      }
+   }
+console.log(add(num1, num2));
+console.log(add("str1", "str2"));
+----------------------------------------------
+CallBack:
+function func1(cb: any)
+ {
+  statement;
+  cb(); 
+   }
+function func2()
+ {
+  statement;
+   }
+func1(func2);
+----------------------------------------------------
+Promise:
+let promise1 :promise<string> =  new promise<string>((rsolve,reject)=>{
+  resolve (statement for resolve);
+  reject (statement for reject)
+})
+promise1.then(()=>{Statement if resoleved}).catch(()=>{Statement if rejected})
+------------------------------------------------------------------
+Promise Methods:
+const pro1: Promise <string> = new Promise((resolve, reject) => {
+	resolve('Pass')
+})
+const pro2: Promise <string>  = new Promise((resolve, reject) => {
+	reject('Fail')
+})
+const pro3: Promise <string>  = new Promise((resolve, reject) => {
+	reject('Failure')
+})
+const pro4: Promise <string>  = new Promise((resolve, reject) => {
+	resolve('Success')
+})
+const prom: Promise <string>[]= [pro1, pro2, pro3, pro4];
+Promise.all(prom)
+   .then((out)=>{console.log('All:',out)})
+   .catch((not)=>{console.log('All:',not)})
+Promise.allSettled(prom)
+   .then((out)=>{console.log('Settle:',out)})
+   .catch((not)=>{console.log('Settle:',not)})
+Promise.race(prom)
+   .then((out)=>{console.log('Race',out)})
+   .catch((not)=>{console.log('Race',not)})
+Promise.any(prom)
+   .then((out)=>{console.log('Any:',out)})
+   .catch((not)=>{console.log('Any:',not)})
+--------------------------------------------------------------
+Timer Methods:
+syntax 1 (toSet):
+setTimer(console.log(to be delayed), delay);
+syntax 2 (toClear):
+let TimeCancel = setTimer(console.log(to be delayed), delay);
+     clearTimer(TimeCancel)
+--------------------------------------------------
+Async/Await Function:
+Syntax 1 (named):
+async function functionName() {
+  let result = await someAsyncFunction();
+  return result;
+ }
+console.log(functionName());
+Syntax 2 (arrow):
+const main = async () => {
+  let data = await fetchData();
+  console.log(data);
+ };
+console.log(main());
+-------------------------------------
+Error Handling:
+try {
+  // Code that might throw an error
+} catch (error) {
+  // Handle the error
+} finally {
+  // Optional: always runs after try or catch (cleanup, etc.)
+}
+----------------------------------------------
+Inline object: (objcctName.Attribute)
+ let student :
+   {name: string, id: number, age: number, grade: string, isPresent: boolean } = {
+    name: 'Raju',
+    id: 11223,
+    age: 15,
+    grade: 'A+',
+    isPresent: true, }
+-------------------------------------------
+Type Aliases Object: (Access: objectName.Attribute)
+type book = {name: string, price: number, noOfPages: number, Material: string,};
+let book1 :book =
+   {
+    name: 'learn Typescript',
+    price: 250,
+    noOfPages: 120,
+    Material: "A4",
+       }
+------------------------------------
+Intersection Object: (Access: objectName.Attribute)
+type person = { name :string, age :number, job :string };
+type contact = { phone :number, email :string, address :string };
+type labour = person & contact
+let worker: labour = { name: 'John', age: 32, job: 'Electrition',
+	phone: 9876543210, email: 'john32@gmail',address: 'Chennai' };
+-----------------------------------------
+Class Object: (Access: objectName.Attribute)
+class person {
+  id: number;
+  firstName: string;
+  lastName: string;
+  age: number;
+constructor (id: number, firstName: string, lastName: string, age: number) {
+   this.id = id;
+   this.firstName = firstName;
+   this.lastName = lastName;
+   this.age = age; 
+    }
+  }
+const obj = new preson (value1,value2,value3,value4)
+-----------------------------------------
+Inheritance Class:
+class ParentClass {
+    property: type;
+    constructor(property: type) {
+        this.property = property;
+    }
+    method() {
+        console.log("Parent Method");
+    }
+}
+
+class ChildClass extends ParentClass {
+    childProperty: type;
+    constructor(property: type, childProperty: type) {
+        super(property); // Calls the parent constructor
+        this.childProperty = childProperty;
+    }
+    childMethod() {
+        console.log("Child Method");
+    }
+}
+const myClass = new ParentClass (value1,value2)
+--------------------------------------------
+Abstract Class:
+abstract class ClassName {
+    property: type;
+    constructor(property: type) {
+        this.property = property;
+    }
+    abstract methodName(): returnType;   // Abstract method (no implementation)
+    display(): void {     // Concrete method (with implementation)
+        console.log(this.property);
+    }
+}
+
+class ChildClass extends ClassName {
+    constructor(property: type) {
+        super(property);
+    }
+    methodName(): returnType {   // Must implement the abstract method
+        // Implementation
+    }
+}
+const cn = new ClassName (value1)
+-------------------------------------------------
+Interface with Objects:
+interface Person {
+    name: string;
+    age: number;
+}
+const person: Person = {
+    name: "John",
+    age: 25
+};
+console.log(person);
+----------------------------------------
+interface Animal {
+    name: string;
+    makeSound(): void;
+}
+
+class Dog implements Animal {
+    name: string;
+    constructor(name: string) {
+        this.name = name;
+    }
+    makeSound(): void {
+        console.log("Dog barks");
+    }
+}
+const dog = new Dog("Tommy");
+=========================================================================
+
+
+
+
+
+
+
+

@@ -8,7 +8,7 @@ test("pagination - optimized version", async ({ page }) => {
     "Smartphone",
     "E-Reader",
     "Action Camera",
-    "Country",
+    "5",
   ];
 
 
@@ -16,7 +16,8 @@ test("pagination - optimized version", async ({ page }) => {
   const pageCount = await pages.count();
 
   for (let i = 0; i <pageCount; i++) {
-    await pages.nth(i).click();
+    if(i>0){await pages.nth(i).click();}
+    // await pages.nth(i).click();
 
     for (const product of products) {
       const row = page.locator("#productTable tbody tr", { hasText: product });
@@ -39,12 +40,12 @@ test("pagination - optimized version", async ({ page }) => {
 test("Validate Dynamic table with pagingnation", async ({ page }) => {
   await page.goto("https://testautomationpractice.blogspot.com/");
 
-  const pages = page.locator("#pagination li a");
+  const pages = page.locator("#pagination li");
   const pageNo = await pages.count();
 
-  const ids = [18, 7, 8, 21, 20];
+  const ids = [18, 7, "$30.99", 8, 21, 20, "Wireless Earbuds"];
 
-  for (let i = 0; i < pageNo; i++) {
+  for (let i = 2; i < pageNo; i++) {
     if (i > 0) {
       await pages.nth(i).click();
     }
@@ -56,14 +57,15 @@ test("Validate Dynamic table with pagingnation", async ({ page }) => {
       for (let k = 0; k < (await row.count()); k++) {
         const cell = await row.nth(k).textContent();
         const check = row.locator("//input[@type='checkbox']");
-        if (ids.includes(Number(cell))) {
+        if (ids.includes(Number(cell)) || ids.includes(cell)) {
           await check.click();
           console.log("Clicked : ", cell);
         }
         // console.log("Cell value : ", cell);
       }
     }
+await page.waitForTimeout(2000);
   }
 
-  await page.waitForTimeout(5000);
+  
 });

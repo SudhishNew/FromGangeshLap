@@ -1,0 +1,113 @@
+	TypeScript - Operators
+-----------------------------------
+ * operator is special Symbols or a keywords used to perform operations on one or more variables and values.
+ * They are the building blocks of expressions and help manipulate data.
+ * it supports all standard operators of Javascript while adding unique operators to handle its static type handling.
+________________________________________________________________________________________________________________________
+syntax: console.log(a(operator)b)
+ * Arithmetic Operators:
+	arithmetic operators are used to perform Mathematic operations.
+	let a: number = 10, b: number = 20 ;
+	console.log(a + b); -----> additon
+	console.log(a - b); -----> subtraction
+	console.log(a * b); -----> multiplication
+	console.log(a / b); -----> division
+	console.log(a % b); -----> modulus 
+	console.log(a ** b); ----> exponential
+ * Assignment Operators:
+	assignment operators are used to assign values to variable and modify their values based on arithmetic operators
+	let a: number = 10, b: number = 5 ;
+	a=a+b; -------> add a+b and assigns it to a
+	console.log(a += b); --------> a=a+b
+	console.log(a -= b); --------> a=a-b
+	console.log(a *= b); --------> a=a*b
+	console.log(a /= b); --------> a=a/b
+	console.log(a %= b); --------> a=a%b
+	console.log(a **= b); --------> a=a**b
+ * Relational/Comparison Operators:
+	used to compare two values and determine the relationship between them.the output will be boolean(True/False)
+	let a: number = 10, b: number = 20 ;
+	console.log(a>b); --------> True - a value is less than b value
+	console.log(a<b); --------> False - a value is not less than b value
+	console.log(a>=b); --------> false - a value is less than b value and not equal value
+	console.log(a<=b); --------> True - a value is not less than b value and not equal value
+	console.log(a==b); --------> False - a value is not equal b value
+	console.log(a!=b); --------> True - a value is not equal b value
+	console.log(a===b); --------> false - a value is not equal to b value even if the type is same
+	let a: number = 10, b: number = "10" ;
+	console.log(a===b); --------> Fales - a value is equal to b value but type is not equal
+ * Logical operators:
+	it used to perform logical operation on boolean values. return value will be in boolean (True/False)
+	a	b	&&(and)  ||(or)  !(not)(if a)   !(not)(if b)
+      true    true      true     true       false             -
+      true   false      false    true         -             false
+     false    true      false    true       true              -
+     false   false      false   false         -              true
+	let a = true, b = false;
+	console.log(a&&b);  ----> false
+	console.log(a||b);  ----> true
+	console.log(!a);  ----> false
+	console.log(!b);  ----> true
+* logical operators with relational operators:
+	console.log(20>10 && 10>5); ------> true && true - true
+	console.log(20>10 || 10<5); ------> true || false - true
+* increment & decrement operetors:
+	it is used to increase or decrease the value of the variable.
+	let x = 10;
+	console.log(x++);   ------> post increment - +1 incremented after value printed in the console
+	console.log(++x);   ------> pre increment - value will printed with increment in the console
+	console.log(x--);   ------> post decrement - +1 decremented after value printed in the console
+	console.log(--x);   ------> pre deccrement - value will be printed with decrement in the console
+* ternary/condional operator:
+	ternary operator is also called as conditional operator, it is a concise way to write conditional statement
+it allows to express a if-else statement in a single line.
+	syntax - condition ? if-true : if-false;
+	i.e. * let a: number = 20, b: number = 10;
+	       let result: number = (a>b) ? a : b ;
+	       console.log(res); -------> output - 20
+	     * let personAge: number = 27;
+	       let result:string = (personAge >= 18) ? "canVote" : "cannotVote";
+	       console.log(result);  -------> output - canVote
+
+------------------------------------------------------------------------------------------------------------------
+true or False Values:
+
+* True values
+Truthy
+" " - with space
+"Hello"
+'G'
+[]
+{}
+5
+76457
+12.67
+-5
+true
+
+* False values
+Falsy
+"" - without space
+0
+null
+undefined
+NaN - Not a Number
+-0
+false
+-------------------------------------------------------------------------------------------------------------
+console.log(-5 && "hello")    // true && true - second Value ---> Out: hello
+console.log(0 && null)        // false && false - first Value ---> Out: 0
+console.log(0 && "hello")     // false && true - first Value ---> Out: 0 
+console.log(-5 || "hello")    // true || true - first Value ---> Out: -5
+console.log(0 || null)        // false || false - second Value ---> Out: null
+console.log(5 || 0)           // true || false - first Value ---> Out: 5
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+

@@ -1,0 +1,230 @@
+    TypeScript - OOPS - Adavanced - Inheritance, Method Overriding, Access Modifiers
+-----------------------------------------------------------------------
+Inheritance:
+ * Inheritance is a class(child/subclass) acquires the properties and behavior(methods) of another class(parent/superclass).
+ * Child inherits from parent Class using 'Extends' and 'super' Keywords, so it gets access to the properties and methods of parent class.
+ * Because of Inheritance, WE don't need rewrite the same method/properties of a class
+Method Overriding:
+ * A subclass/childclass can provide a specific implimentation of a mathod that is already defined in its superclass.
+ * The Method must have the Same Name,RetunType and Parameters.
+-----------------------------------------------------------------------------------------------------------------------------------
+Inheritance:
+class School {
+	name: string;
+	id: number;
+	phone: number;
+	department: string;
+	schoolName: string;
+	schoolId: number;
+	schoolPhone: number;
+	education: string
+	constructor(name: string, id: number, phone: number, department: string,
+		schoolName: string, schoolId: number, schoolPhone: number, education: string) {
+		this.name = name;
+		this.id = id;
+		this.phone = phone;
+		this.department = department;
+		this.schoolName = schoolName;
+		this.schoolId = schoolId;
+		this.schoolPhone = schoolPhone;
+		this.education = education;
+	}
+	schoolTime() {
+		console.log('School Timing: 9.30AM to 3.30PM');
+	}
+	schoolDay() {
+		console.log('School WorkingDays: Monday to Friday & 2nd Saturday if required');
+	}
+	schoolInfo() {
+		console.log(`SchoolName: ${this.schoolName}
+	SchoolId: ${this.schoolId}
+	SchoolPhone: ${this.schoolPhone}
+	Education: ${this.education}`);
+	}
+}
+class Tamil extends School {
+	name: string;
+	id: number;
+	phone: number;
+	department: string;
+	constructor(name: string, id: number, phone: number, department: string,
+		schoolName: string, schoolId: number, schoolPhone: number, education: string) {
+		super(name, id, phone, department,
+			schoolName, schoolId, schoolPhone, education)
+		this.name = name;
+		this.id = id;
+		this.phone = phone;
+		this.department = department;
+	}
+	schoolTime() {
+		super.schoolTime();
+		console.log('Thamizh Teacher comes to School at 9.00AM and leaves at 4.00PM');
+	}
+	schoolDay() {
+		super.schoolDay();
+		console.log('Thamizh Teacher works in Saturdays too..!');
+	}
+	teacherDuty() {
+		console.log(`This Teacher Teaches ${this.department}`);
+	}
+	teacherInfo() {
+		console.log(`TeacherName: ${this.name}
+	TeacherId: ${this.id}
+	TeacherPhone: ${this.phone}
+	Department: ${this.department}
+	SchoolName: ${this.schoolName}
+	SchoolId: ${this.schoolId}
+	SchoolPhone: ${this.schoolPhone}
+	Education: ${this.education}`);
+	}
+}
+class English extends School {
+	name: string;
+	id: number;
+	phone: number;
+	department: string;
+	constructor(name: string, id: number, phone: number, department: string,
+		schoolName: string, schoolId: number, schoolPhone: number, education: string) {
+		super(name, id, phone, department,
+			schoolName, schoolId, schoolPhone, education)
+		this.name = name;
+		this.id = id;
+		this.phone = phone;
+		this.department = department;
+	}
+	schoolTime() {
+		console.log('English Teacher comes to School at 9.00AM and leaves at 4.00PM');
+	}
+	schoolDay() {
+		console.log("English won't Teacher work in Saturdays.");
+	}
+	teacherDuty() {
+		console.log(`This Teacher Teaches ${this.department}`);
+	}
+	teacherInfo() {
+		console.log(`TeacherName: ${this.name}
+	TeacherId: ${this.id}
+	TeacherPhone: ${this.phone}
+	Department: ${this.department}
+	SchoolName: ${this.schoolName}
+	SchoolId: ${this.schoolId}
+	SchoolPhone: ${this.schoolPhone}
+	Education: ${this.education}`);
+	}
+}
+let tamil = new Tamil('Karikalan', 1213, 9876543210, 'Thamizh', 'Bethany Hr. Sec. School', 656463, 9444252621, 'State Board');
+let english = new English('Johnson', 3121, 9123456780, 'English', 'Bethany Hr. Sec. School', 656463, 9444252621, 'State Board');
+// Parent class variable holding a child class object:
+let school:School = new English('Johnson', 3121, 9123456780, 'English', 'Bethany Hr. Sec. School', 656463, 9444252621, 'State Board');
+tamil.schoolInfo();
+tamil.schoolTime();
+tamil.schoolDay();
+tamil.teacherDuty();
+tamil.teacherInfo();
+english.schoolTime();
+english.schoolDay();
+english.teacherDuty();
+english.teacherInfo();
+school.schoolInfo(); // possible
+school.teacherInfo(); // impossible
+------------------------------------------------------------------------------
+using 'Super': 
+class Add {
+	num: number = 10;
+	num1: number = 20;
+	constructor (){
+		console.log('this is From Parent');
+	}
+	added (): number {
+		return this.num+this.num1;
+	}
+}
+class Add1 extends Add{
+	num1: number = 30;
+	constructor (){
+		super();  -----------> access child1 with parent / if there is no contructor in parent Class
+		console.log('This is Child 1');
+	}
+	added1 (): number {
+		return this.num+this.num1;
+	}
+}
+class Add2 extends Add{
+	num: number = 30;
+	constructor (){
+		super(); -----------> access child2 with parent / if there is no contructor in parent Class
+		console.log('This is Child 2');
+	}
+	added2 (): number {
+		return this.num+this.num1;
+	}
+	added (): number {
+		return this.num*this.num1;
+	}
+}
+
+let add = new Add();
+let add1:Add = new Add1 ();
+let add2:Add = new Add2 ();
+console.log(add.added());
+console.log(add1.added());
+console.log(add2.added());
+-------------------------------------------------------------------------------------
+Access Modifier:
+ Access Modifiers Decides the scope of the property/method
+ * Public - It can be accessible anywhere.
+ * protected - It can be accessed within the Parent/Child class only.
+ * Private - I can be accessed only in the Parent class, not even in the child class.
+
+class Access {
+	public name: string;
+	protected age: number;
+	private id: number;
+	constructor(name: string, age: number, id: number){
+		this.name = name;
+		this.age = age;
+		this.id = id
+	}
+	displayInfo(){
+		console.log('THis Is parent Name:',this.name);
+		console.log('THis Is parent Age:',this.age);
+		console.log('THis Is parent Id:',this.id);
+	}
+}
+class Employee extends Access {
+	private designation: String;
+	constructor (name: string, age: number, id: number,designation: string){
+		super(name,age,id)
+		this.name = name;
+		this.age = age;
+		this.id = id;------------> Private only accessed within the class, not even in the child class.
+		this.designation = designation;
+	}
+	showInfo(){
+		console.log('THis Is Child1 Name:',this.name);
+		console.log('THis Is parent Age:',this.age);
+		// console.log('THis Is Child2 Id:',this.id); ------------> Private only accessed within the class, not even in the child class.
+		console.log('THis Is Child2 Employee:',this.designation);
+	}
+}
+let emp = new Employee ('Andrew',32,232,'Quality Engineer');
+emp.displayInfo();
+emp.showInfo();
+console.log('emp Name:',emp.name);
+console.log('emp Age',emp.age); -----------> protected property accessed within the class/subclass
+console.log('empy Id',emp.id); ------------> Private only accessed within the class, not even in the child class.
+console.log('empy Id',emp.designation); ------------> Private only accessed within the class, not even in the child class.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+
+
+
+
+
+

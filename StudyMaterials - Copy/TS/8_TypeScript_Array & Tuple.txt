@@ -1,0 +1,145 @@
+     TypeScript - Methods - Array & Tuple
+--------------------------------------------------
+ Array:
+  * Array is a data structure used to store multiple values in a single variable.
+  * Array can hold the same data type or different Data types.
+  * Arrays are declared using '[ ]' symbol or generic keyword 'array<type>'.
+  * Index value of the first element in an Array starts from 0 and the last element value (n-1), if 5 is last index then (5-1)
+  * Arry is an ordered collection of elements, the order how the values are stored.
+
+Syntax:
+  Method 1: First declaration then assigning value.
+  * let names: string [] = [];
+    names[0] = 'John';
+    names[1] = 'Johnson';
+    names[2] = 'Sam';
+    names[3] = 'Ram';
+     console.log(names);
+  Method 2: Declaration with assigning value.
+  * let empId: number[] = [1221, 2332, 3443, 4554];
+     console.log(empId);
+  * let empName: Array<string> = ["Alice", "Bob", "Charlie","David"];
+     console.log(name1);
+  * let numName: Array<string | number> = ["Alice", 25, 28, "Bob", 65, "Charlie", 79]; ---------> works in method:1 also (let names: string|number []=[];)
+     console.log(numName);
+  * let anyVal: Array<any> = [11, true, "Alice", 45, false, 76, "Bob", null, "Charlie"]; ---------> works in method:1 also (let names: any []=[];)
+     console.log(anyVal);
+
+ Iterating an array using For Loop: ( i represents element index in array on loops)
+ i.e. * let anyval: Array<any> = [11, true, "Alice", 45, false, 76, "Bob", null, "Charlie"];
+         console.log(anyval2[2]);
+         console.log("Elements in Array:", anyval.length);
+         console.log(anyval[9-1]);
+	for(let i=0; i<=anyval.length-1; i++){  ---------> if i<anyval.length (-1) is not required.
+	 console.log(anyval[i]);  ---------> i represents element index in array
+	  }
+	for(let i=0; i<=anyval.length-1; i++){
+	 console.log(`Values Available in Array: ${anyval[i]}`);
+	  }
+ Iterating an array using For-in Loop: (starting index, condition, incrementation not required)
+   Syntax: for (let i in arrayVariable)
+	     {
+	      statement(arrayVariable[i]);
+	       }
+        * let empId: number[] = [1221, 2332, 3443, 4554];
+	   for(let i in empId)
+	    {
+	     console.log(`Employee Id ${empId[i]} is available to the project`);
+	     // console.log(`Employee Id ${empId[0]} assigned to the project`);
+	     // console.log(`Employee Id ${empId[4-1]} removed to the project`);
+	      }
+ Iterating an array using For-of Loop: (starting index, condition, incrementation not required)
+   Syntax: for (let i in arrayVariable) --------> i becomes data itself. 
+	     {
+	      statement(i);
+	       }
+        * let anyVal: any[] = [11, true, "Alice", 45, false, 76, "Bob", null, "Charlie"];
+	   for(let av of anyVal)
+	    {
+	     console.log(`Value ${av} in anyValArray. `);
+	      }
+  
+ * search an element in an array using function and  return type in boolean:
+   function searchEle(eleNum: number, numArr: number[]): boolean {
+    for (let i in numArr) {
+        if (numArr[i] == eleNum) {
+            return true;
+        }
+     }
+     return false;
+   }
+   console.log(searchEle(8, [8, 2, 8, 3, 4, 2, 9, 4]));
+   console.log(searchEle(10, [8, 2, 8, 3, 4, 2, 9, 4]));
+
+ * a function return a differnt array by taking an array:
+   function upcase(regArr: string[]): string[]
+    {
+     let result: string [] = [];
+     for (let i in regArr)
+      {
+	result [i]=regArr[i].toUpperCase(); ------> if undefined warns, use regArr[i]!.toUpperCase();d
+       }
+      return result;
+     }
+    console.log(upcase(['hello','welcome','thankYou','Please']));
+---------------------------------------------------------------------------------------------------------------------
+
+Tuple:
+ * Tuple is a fixed length of array, were each elements has a specific type.
+ * Tuple helps in storing multiple fields of different data types together.
+ * Tuples are stricter than regular arrays.
+Syntax:
+       * variable : [type1, type2] = [value1, value2]  ------> type is the placeholder of index value (type1=value1) = (variable[0])
+       * variable : [type1, type2];
+	  variale : [value1,value2]
+Tuple with two values with type
+ * let newData:[number,string] = [45,'Andrew'];
+   console.log(`Mr.${(newData[1])} is ${(newData[0])} years old.`)
+
+Tuple with multiple values with type: (fixed data type for index)
+ * let newData:[number, string, boolean, string, number] = [45,'Andrew', true, 'Alice', 43];
+   console.log(`${(newData[0])} years old ${(newData[1])} is ${(newData[2])}ly going to marry ${(newData[3])} who is ${(newData[5-1])} years old`);
+
+Tuple with types of FOR loop:
+  * Basic For:
+    let newData:[number, string, boolean, string, number] = [45,'Andrew', true, 'Alice', 40];
+     for (let re = 0; re < newData.length; re++)
+      {
+       console.log( newData[re]);
+        }
+  * For-in:
+    let newData:[number, string, boolean, string, number] = [45,'Andrew', true, 'Alice', 40];
+     for (let re in newData)
+      {
+       console.log( newData[re]);
+        }
+  * For-of:
+    let newData:[number, string, boolean, string, number] = [45,'Andrew', true, 'Alice', 40];
+     for (let re of newData)
+      {
+       console.log(re);
+        }
+Tuple Array: (An array of Tuples)
+Syntax:
+       variable : [type1, type2] [] = [[value1, value2], [value1, value2], [value1, value2], [value1, value2]];
+ * let newData:[number, string, boolean, string, number] []= [[45,'Andrew'], [44,'Alice'], [40,'John']];
+    console.log(newData[0]);
+   let nd = newData[1];
+    console.log(nd[0]);
+    console.log(newData[2]![1]);
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -22,7 +22,8 @@ class Search {
     Adults,
     child,
   ) {
-    await this.page.waitForLoadState('networkidle',{timeout:10000})
+    await this.page.waitForLoadState('domcontentloaded', { timeout: 20000 });
+    await this.location.waitFor({ state: 'visible', timeout: 20000 });
     await this.location.selectOption(location);
     await this.hotels.selectOption(hotels);
     await this.roomtype.selectOption(roomtype);
@@ -32,9 +33,6 @@ class Search {
     await this.Adults.selectOption(Adults);
     await this.child.selectOption(child);
     await this.submit.click();
-
-    // await this.page.waitForTimeout(3000)
-    
   }
 
   //    async submitBtn(){

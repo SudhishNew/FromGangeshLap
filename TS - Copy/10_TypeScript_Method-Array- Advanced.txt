@@ -1,0 +1,140 @@
+     TypeScript - Methods - Array - forEach, Map, Filter, Reduce, Some & every
+--------------------------------------------------
+ Methods:
+  * Methods are built-in functions in programming Language that let you perform operations on data.
+  * All methods are functions, but not all functions are methods because method belongs to an object
+  * Methods ends with () .
+ Array:
+  * Array is a data structure used to store multiple values in a single variable.
+  * Array can hold the same data type or different Data types.
+  * Arrays are declared using '(type)[ ]' symbol or generic keyword 'array<type>'.
+  * Index value of the first element in an Array starts from 0 and the last element value (n-1), if 5 is last index then (5-1)
+  * Arry is an ordered collection of elements, the order how the values are stored.
+ forEach, Map, Filter, Reduce, Some & every:
+  * Every Method will take function as parameter.
+  * It is required to pass a function as parameter.
+--------------------------------------------------------------------------------------------------------------------------------
+
+forEach() - Void
+Map() - Returns Array
+filter() - Returns Array
+reduce() - Single Value
+some() - Boolean
+every() - Boolean
+
+
+For-Each (): Executes a function once for each element.
+   Syntax: array.forEach (function(currentValue, Index, array){
+            statement to be executed;
+             });
+  current value: The current Value being processed in the array.
+  index (optional): The index of th current element being processed in the array.
+  array (optional):the entire array of the current element.
+
+   * get index of all the fruits with the value.
+     let fruits: string[] = ['Papaya','Apple','Mango','Orange','Banana'] 
+  Anonymous:
+     fruits.forEach(function(value, indexNo, arr){
+      console.log(`${value}'is in the'${indexNo}Index of the ${fruits} array`)
+       })
+  Arrow:
+     * fruits.forEach((value, indexNo, arr)=>{
+        console.log(`${value} is in the ${indexNo} Index of the array`)
+         })
+     * fruits.forEach((value, indexNo, arr)=>{
+         console.log(value.toUpperCase())
+          })
+-------------------------------------------------------------------
+Map (): creates a new array with result of calling the function on every element of an array 
+   Syntax: array.map (function(currentValue, Index, array){
+             statement to be executed;
+              });
+    * let values: number []= [2, 4, 6, 8, 10];
+      let sqvalue = values.map((element)=>{
+          return element+element;
+        })
+      console.log(sqvalue); 
+      console.log(values);
+    * let values: number []= [2, 4, 6, 8, 10];  -------> if you have single line arrow function, then {} & 'return' keyword is optional.
+      let sqvalue = values.map((element)=> element+element);
+      console.log(sqvalue); 
+      console.log(values);
+----------------------------------------------------------------------
+Filter (): creates a new array with the elements which passes/satisfies the function of an array.
+   Syntax: array.map (function(currentValue, Index, array){
+             statement to be executed;
+              });
+    * let values: number []= [2, 3, 4, 5, 6, 7, 8, 9, 10];
+      let even = values.filter((odd)=> odd%2 == 0 );  ------> anonymous function in single line
+      let even1 = values.filter((odd)=> { 
+       return (odd%2 == 0);
+         });
+      console.log(even); 
+      console.log(values);
+    * if number greater than 3:
+      let great3 = values.filter((values)=> values>3);
+      console.log(great3);
+--------------------------------------------------------------------------
+Reduce (): Returns a single value by appling function on every elements of an array
+   Syntax: array.reduce(function(accumulator,currentValue,) => {
+             statements;},Accumulation value) 
+    Accumulator: the value from the previous iteration.(if we don't assign a value for accumulation, it starts from 0 by default)
+    * let values: number []= [2, 3, 4, 5, 6, 7, 8, 9, 10];
+      let newVal = values.reduce((add,val)=>{
+         return add+val });
+       console.log(newVal);
+    * let values: number []= [2, 3, 4, 5, 6, 7, 8, 9, 10];
+      let newVal = values.reduce((add,val)=> add+val, 10);
+       console.log(newVal);
+------------------------------------------------------------------------------
+Some (): Checks if any of an element from an array satisfies the condition, similer to filter method but checks any one value and return value will be in boolean.
+   Syntax: array.some (function(currentValue, Index, array){
+             statement to be executed;
+              });
+    * find values negative or not
+       let values: number []= [2, 3, 4, 5, -6, 7, 8, 9, 10];
+       *let negative = values.some ((val)=>{
+         return vav<=0});
+         console.log(negative);
+       *let negative = values.some ((val)=> vav<=0 );
+         console.log(negative);
+-------------------------------------------------------------------------
+Every (): Checks if all the elements from an array satisfies the condition, similer to filter method but checks any one value and return value will be in boolean.
+   Syntax: array.every (function(currentValue, Index, array){
+             statement to be executed;
+              });
+    * find values negative or not
+       let values: number []= [-2, -3, -4, -5, -6, -7, -8, -9, -10];
+       *let negative = values.some ((val)=>{
+         return vav<=0});
+         console.log(negative);
+       *let negative = values.some ((val)=> vav<=0 );
+         console.log(negative);
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

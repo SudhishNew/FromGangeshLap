@@ -1,0 +1,226 @@
+    TypeScript - OOPS - Adavanced - InterFaces & Modules
+-----------------------------------------------------------------------
+Interface:
+ * Interface in Typscript is a way to define the structure of an object.
+ * It is like a blueprint for Object.
+ * It specifies what properties and methods an object should have, along with their types.
+ * you can't skip properties until it is optional property.
+ * Can rearrange the properties. but, what mentioned in the Interface it must be in Objects.
+ * similer to class but class cantains properties, constructor, Method, while interface contains properties, methods.
+ * Abstract Method: we only signature of the method. there is no implementation, ths implementation must be in the child classes
+--------------------------------------------------------------------------------------------------
+syntax:
+ interface intefaceName {
+ properties
+ methods
+}
+let newInterface: intefaceName= {key='value', key1= value}
+
+* Regular properties
+* Optional properties - '?'
+* Readonly properties & funtion types
+* Extending Interfacer - 'extends'
+* Class Implements interface - 'implements'
+-----------------------------------------------------------------------------
+* Regular properties:
+basic interface:
+
+interface person {
+ name: string;
+ age: number;
+}
+let student: person = {name='Charles', age= 24}
+console.log(student.name);
+console.log(student.age);
+console.log(student);   --------> to check the data in the object
+
+* Optional properties:
+
+interface person {
+ name: string;
+ email?: string;
+}
+let student: person = {name: 'Charles', email: 'studentcharles@gmail.com'}
+let student1: person = {name: 'Benjamin'}
+console.log(student.name, student.email);
+console.log(student1.name, student1.email);
+console.log(student1);
+
+* Readonly properties & funtion types:
+
+interface Book {
+ title: string;
+ readonly bookId: number;
+ bookInfo():void; --------------> abstract method
+}
+let b1:book = {title='Learn Playwright',bookId=3242}
+console.log(b1.title);
+console.log(b1.bookId);
+b1.title = 'Lear Typescript';
+b1.bookId = 4252 -------> compile type error (cannot assign because it's a read-only property)
+console.log('-----After changing-----');
+console.log(b1.title);
+console.log(b1.bookId);
+
+realTime Interface: 
+  interface LoginData {
+    username: string;
+    password: string;
+  }
+
+  function login(data: LoginData) {
+    console.log(data.username);
+  }
+
+* Extending Interfacer: (Inheritance)
+
+interface Car {
+ brand: string;
+ model: string;
+}
+interface Acar extends Car {
+ modelId: number;
+ makeYear: number;
+}
+let newCar: Acar = {brand:'Ford', model:'Mustung', modelId: 19670012, makeYear: 1967}
+console.log(`My Car is ${newCar.makeYear} ${newCar.brand} ${newCar.model} with ID${newCar.modelId}`);
+
+* Class Implements interface 
+
+interface Animal {
+ name: string;
+ sound():void;
+}
+class Cat implements Animal {
+ name:string;
+ colour: string;   --------> possible to create additional attribute
+ constructor (name:string, colour:string) {
+  this.name= name;
+  this.colour = colour;
+  }
+ sound() {
+  console.log('Meow...Meow...');
+  }
+ myCat():void {
+  console.log(`My Cat Name is ${this.name}, He is ${this.colour} in colour.`);
+  }
+}
+let pet = new Cat ('Tiger','Orange');
+console.log(pet.name);
+console.log(pet.colour);
+pet.sound();
+pet.myCat();
+-----------------------------------------------------------------------------------------
+Class, Interface:
+extends = inherit structure/behavior
+implements = provide implementation
+
+ Possible:
+   Class Extends Class  --> A class inherits properties and methods from another class.
+   Interface Extends Interface  --> One interface can inherit members from another interface.
+   Class Implements Interface  --> A class provides the implementation for an interface.
+   Interface Extends Class --> An interface can extend a class. The interface inherits the instance members (properties and methods) of that class.
+    
+ Impossible:
+   Interface Implements Class  --> *implements means "provide implementation".
+				   *Interface cannot provide implementation.
+				   *Interface only declares structure.
+
+Class vs Interface:
+  Class:
+    Denition:
+	Bluprint to create Objects with implementation.
+    Contains:
+	Properties, Constructors, Methods. (with implementation)
+    Instatiation:
+	Can be instantiated using (new) Keyword.
+    Inheritance:
+	Supports single Inheritance using (extends) keyword.
+    Implements:
+	A class can implement one or more Interfaces.
+    Modifiers:
+	Supports Access modifiers (public, private, protected).
+
+  Interface:
+    Denition:
+	Defines structure/type of an Object with no implementation
+    Contains:
+	Only Properties and methods (without implementation)
+    Instatiation:
+	Cannot be instantiated directly.
+    Inheritance:
+	Supports multiple Inheritance using (extends) keyword.
+    Implements:
+	Interface cannot implement a Class.
+    Modifiers:
+	Does not support Access modifiers
+---------------------------------------------------------------------------
+Modules:
+ A MODULE in TypeScript is a file that exports codes (contains variables, Functons, Interfaces, Classes, Types, etc..) and allows other files to import it. 
+  * Module is simply a file that contains code you can export and reuse in other files.
+  * Modules help you organize code into seperate files and avoid global scope pollution.
+  * Modules prevent naming conflicts by keeping declaration in their own scope.
+
+(in file1.ts)
+export let app = "What's App";
+
+export function add (a: number,b: number):number {
+ return a+b;
+}
+
+export class Person{
+ name: string;
+ year: number;
+ age: number;
+ job: string;
+ constructor(name: string, year: number, age: number, job: string){
+  this.name = name;
+  this.year = year;
+  this.age = age;
+  this.job = job
+ state () {
+   console.log(`${this.name} is born in ${this.year}, he is ${this.age} and works as a ${this.job}`);
+	}
+   }
+}
+
+
+(in file2.ts)
+import {app, add, Person} from "./file1"
+
+console.log(app);
+console.log(add(25,70));
+let person = new Person ('Benjamin',1995,31,'Engineer')
+person.state;
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+***** error in file 1 & 2 ************
+If error:
+ File 1:
+   A top-level 'export' modifier cannot be used on value declarations in a CommonJS module when 'verbatimModuleSyntax' is enabled.
+ File 2:
+   ECMAScript imports and exports cannot be written in a CommonJS file under 'verbatimModuleSyntax'. Adjust the 'type' field in the nearest 'package.json' to make this file an ECMAScript module, or adjust your 'verbatimModuleSyntax', 'module', and 'moduleResolution' settings in TypeScript.
+
+Then do it in:
+ * package.json(file):
+   {
+    "type": "module"
+   }
+
+ * tsconfig.json (file):
+   {
+    "compilerOptions": {
+     "module": "ESNext",
+     "moduleResolution": "Bundler",
+     "target": "es2021",
+      }
+    }
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
+
+
+
+
+
+
+

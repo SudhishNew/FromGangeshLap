@@ -1,0 +1,197 @@
+     TypeScript - OOPS - Objects
+------------------------------------------------------
+ Object-Oriented Programming System ( OOPS) :
+ * Object-Oriented Programming (OOP) is a programming is the concept of “objects”—self-contained units that combine Properties and Methods that operate on that data.
+    * Properties (variables/attributes) => what the object has
+    * Methods (functions) => what the object can do
+ Objects:
+  * Object is a group of properties and Behaviour.
+  * Variable are Known as Properties and Methods are considered as Behaviour in Objects.
+  * An Object Contains Variables and Functions.
+  * Object is a Collection of Key & Value Pairs metioned inside the '{Key1= value, key2= value}'.
+--------------------------------------------------------------------------------------------------
+  * Different ways to create an Object:
+     * Using object type - Directly defining the value for a Variable (Js/Ts)
+     * Inline Type Object - Define the datatype for the keys (Ts only)
+     * Using type Aliases - (Ts)
+     * Using the Classes - (Js ES16/Ts)
+
+* Using 'object' type:
+   * Typescript 'Obeject' type represents all values that are not in primitive types.
+  let employee =  {name:'Andrew', age:30, salary: 30000 , job: 'Engineer'}
+   or
+  let employee =
+   {
+    name: 'Andrew',
+    age: 30,
+    salary: 30000,
+    job: 'Engineer',
+    getDetails: function () {
+        return `Name:${this.name},
+            Age:${this.age},
+            Salary:${this.salary},
+            Job:${this.job}`
+       }
+      } 
+   * accessing Object 1: (using '.' notaion)
+      console.log(employee.getDetails());
+      console.log(employee.name,employee.salary);
+   * accessing Object 2: (using '[" "]' notaion)
+      console.log(employee["getDetails"]());
+      console.log(employee["name"],employee["salary"]);
+   * Change the value:
+      employee.job = 'Dpt.Manager';
+      employee['job'] = 'Manager';
+      employee.salary = 50000;
+
+*** Inline Type Object:
+   * Every time the object is created, the structure should be redefined.
+  let student :
+   {
+    name: string,
+    id: number,
+    age: number,
+    grade: string,
+    isPresent: boolean,
+    getSummary: ()=> string
+       } = {
+    name: 'Raju',
+    id: 11223,
+    age: 15,
+    grade: 'A+',
+    isPresent: true,
+    getSummary: ()=> {
+        return return `The boy named ${student.name} ID is ${student.id}
+           and aged ${student.age} got the ${student.grade} Grade,
+           was he present today ?: ${student.isPresent}`
+        }
+       }
+     console.log(student.getDetails());
+     console.log(student.name,student.salary);
+  let student2 :
+   {
+    name: string,
+    id: number,
+    age: number,
+    grade: string,
+    isPresent: boolean,
+    getSummary: ()=> string
+       } = {
+    name: 'Ramya',
+    id: 11233,
+    age: 14,
+    grade: 'A',
+    isPresent: false,
+    getSummary: ()=> {
+        return return `The girl named ${student.name} ID is ${student.id}
+           and aged ${student.age} got the ${student.grade} Grade,
+           was she present today ?: ${student.isPresent}`
+        }
+       }
+*** Using 'type' Aliases:
+  * Type aliases allows creating a new name for an existing type for an Object.
+  type book =
+   {
+    name: string,
+    price: number,
+    noOfPages: number,
+    Material: string,
+    getInfo: ()=> string
+       };
+
+  let book1 :book =
+   {
+    name: 'learn Typescript',
+    price: 250,
+    noOfPages: 120,
+    Material: "A4",
+    getInfo: ()=> {
+         return `i bought ${book1.name} for ${book1.price}
+               Rupees ${book1.noOfPages} in the size of ${book1.Material}`
+         }
+       }
+  let book2 : book =
+   {
+    name: 'Java beginner to Advance',
+    price: 350,
+    noOfPages: 230,
+    Material: "A3",
+    getInfo: ()=> {
+         return `i bought ${book2.name} for ${book2.price}
+               Rupees with ${book2.noOfPages}Pages in the size of ${book2.Material}`
+         }
+       }
+console.log(book1.name,book1.price);
+console.log(book1.getInfo());
+console.log(book2.name,book2.price);
+console.log(book1.getInfo());
+
+*** intersection Type
+ type person = {
+	name : string,
+	age : number,
+	job : string
+	};
+ type contact = {
+	phone : number,
+	email : string,
+	address : string
+	};
+ type labour = person & contact & {
+	getContact : () => string; 
+	};
+
+ let worker: labour = {
+	name: 'John', age: 32, job: 'Electrition',
+	phone: 9876543210, email: 'john32@gmail',address: 'Chennai',
+	getContact: ()=> `${worker.name} can be contacted in ${worker.phone} or ${worker.email}`
+	};
+console.log(worker.job,worker['phone']);
+console.log(worker.getContact());
+
+*** Using the Classes:
+  * Class is a blueprint for creating objects.
+  * Constructor is a special method in a class that is automatically called when an object is created.
+  * Constructor used to initialize object values or assign value to the object. it didn't return any value.
+
+ class person {
+	id: number;
+	firstName: string;
+	lastName: string;
+	age: number;
+ constructor (id: number, firstName: string, lastName: string, age: number) 
+	{
+	 this.id = id;
+	 this.firstName = firstName;
+	 this.lastName = lastName;
+	 this.age = age; 
+	  }
+	getInfo() :string { return `${this.id} ${this.firstName}`; }
+	getFullName() :string { return `${this.firstName} ${this.lastName}`}
+      }
+let person1 = new person (112233,'John', 'Wolf', 32);    -----> assigns value to the constructor , Class
+let person2 = new person (332211, 'David', 'Kennedy', 45);    -----> assigns value to the constructor , Class
+let person3 = new person (123123, 'Robert', 'Pattinson', 39);    -----> assigns value to the constructor , Class
+console.log(person1.getInfo());
+console.log(person1.getFullName());
+console.log(person2.getInfo());
+console.log(person2.getFullName());
+console.log(person3.getInfo());
+console.log(person3.getFullName());
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

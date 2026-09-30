@@ -1,0 +1,114 @@
+ I) Comments
+---------------
+ * used to hide code in execution . the commented lines won't executed.
+ * To mention why the function written or what is the function or the code is going to do.
+
+Single line comment: (shortkey: ctr+/ or Cmd+/)
+//........
+multiline comments: (Shortkey: Shift+alt+A or Shift+Option+A)
+/*.........
+...........
+...........*/
+________________________________________________________________________________
+II) Variables
+---------------
+  * A variable is a named memory location used to store data that can be accessed and manipulated during program execution.
+  * The value stored in a variable can be reused, changed, or updated during program execution.
+
+rules:
+ * Can start with letters, _ , $
+ * Can't start with numbers
+ * No reserver Keywords. Built-In Keywords like this, for, let, while, etc...
+ * Case-Sensitive (Age != age)
+ * Camel-Case must be used
+i.e: valid= let userName; let _count; let $price;
+     invalid = let 1name; let let; let for
+
+X = 10
+'X' is variable,'10' is data
+studentName = "Adolf"
+'studentName' is variable,'Adolf' is data
+
+Use keywords to declare variable: (var, let, const)
+
+Syntax: keyword variable :datatype = value
+i.e. var age :number = 30
+i.e. var age = 30
+
+1) Var, Let, Const:
+* Var: not recommended,outdated.function scoped and lead to unexpected issues.(i.e. loop, conditonal statements)
+* let: use when you need a varible that can change values.
+* const: use when you need a varible that won't change or shouldn't change values.
+
+Table
+-------------
+difference      var      let     const
+use-if        not-use  chan-val  cons-val
+scope	     function   block    block 
+initialize       ^        ^        x
+redeclare        ^        x        x
+reassign         ^        ^        x
+hoist         undefi   ref-err  ref-err
+
+
+1.1) scope - accessible area (functional scope, block scope)
+
+function scope(){
+	if(true){
+		var msg1 = "this in stored in var";
+		let msg2 = "this in store in let";
+		const msg3 = "this is stored in const"
+		console.log(msg1);    -------> will print in the console
+		console.log(msg2);    -------> will print in the console
+		console.log(msg)3;    -------> will print in the console
+	}
+	console.log(msg1);    -------> will print in the console
+	console.log(msg2);    -------> won't print in the console
+	console.log(msg3);    -------> won't print in the console
+} 
+
+1.2) initialization - value assingment
+	var x;  -> declaration
+	x=10;  -> initialization
+
+var x;
+let y;
+const z;  ------> must initialized
+console.log(x); ------> undefined
+console.log(y); ------> undefined
+console.log(z); ------> Trigger uncaught Exception error.
+x= 10;
+y= 30;
+const z= 50;
+console.log(x); ------> will print value
+console.log(y); ------> will print value
+console.log(z); ------> will print value
+
+1.3) Redeclaration - redeclare variable
+var country = "India" lkl
+var country = "United Kingdom"  ---->  value changed code will execute.
+let state = "New Delhi"
+let state = "London"  ----> Trigger uncaught Exception error.
+const continent = "Asia"
+const continent = "Europe"  ----> Trigger uncaught Exception error.
+
+1.4) reinitialization - value reassingment
+var x = 10;
+x= 20;
+let y = 30;
+y= 40;
+const z = 50;
+z= 60;
+console.log(x); ------> will print recent value
+console.log(y); ------> will print recent value
+console.log(z); ------> TypeError: Assigment to constant Variable
+
+1.5) Hoisting - declaration available before the code is executed
+console.log(a);  ----> undefined
+var a = 10;  -----> if not exists - referenceError: 'a' is not defined
+console.log(b);  ----> reference error: 'a' is Not Defined (Temporal Dead Zone)
+let b = 30;  -----> if not exists - referenceError: 'a' is not defined
+console.log(c);  ----> reference error: cannot access 'a' befor initialization (Temporal Dead Zone)
+const c = 50;  -----> if not exists - referenceError: 'a' is not defined
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

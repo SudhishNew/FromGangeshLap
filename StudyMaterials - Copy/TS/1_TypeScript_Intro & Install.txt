@@ -1,0 +1,98 @@
+  TypeScript - Intro & install
+------------------------------------
+
+Programming Language:
+* Programming language is a set of rules, keywords, and syntax used to write instructions that a computer can understand and execute to perform specific tasks.
+* Humans use English, Tamil, or Hindi to communicate with each other, programmers use programming languages such as Java, Python, TypeScript, or C# to communicate with computers.
+
+TypeScript:
+* Author of TypeScript ANDERS HELJSBERG, The lead architect of C#.
+* Public announcement Oct,2012 developed by MICROSOFT.
+__________________________________________________________________________
+ What is TypeScript
+-----------------------
+* File Name Ends with (.ts)
+* It's a syntactic superset of JavaScript which adds static typing, Means it adds TYPE syntax on top of javascript
+* allows developers to add TYPES.
+* All features in JavaScript can be used in TypeScript.
+syntactic superset:
+ A launguage that includes all the syntax of another launguage and adds new syntax without breaking the original syntax.
+___________________________________________________________________________
+How TS works
+--------------
+* Write Codes in TypeScript, Extention (.ts)
+* The TypeScript compiler converts it into JavaScript.
+* The Codes will run in Any javaScript Environment (browser, node.js).
+
+TypeScript -> Ts Compiler -> JavaScript
+___________________________________________________________________________
+  JS vs TS
+-------------
+* JS codes will work in TS too.
+* TS adds optional feature (i.e. TYPE) to make coding Easier and Safer.
+* Helps catch Errors in codes before Execution.
+* Large project managed Easier.
+
+warning before execution:
+i.e.
+1)
+var x: number = 5
+var x='Typescript'
+
+JS >> no error
+TS >> Error
+
+2)
+JS
+function add(a,b){
+    return a+b;
+ }
+add(5,"10");
+
+>> 510 instead of 15 (no error throw) (type error)
+
+TS
+function add(a:number,b:number):number{
+	return a+b;
+}
+add(5,"10");
+>>> Warns before execution.
+____________________________________________________________________________
+Installation TypeScript
+-----------------
+NPM - Node Package Manager
+NPX - Node Package EXecuter
+TSC - TypeScript Compiler
+TSX - TypeScript EXecuter
+
+Requirment:
+* Node.js -> runtime env to run JS.
+	* visit: https://nodejs.org/en/download  ->  click [windows intaller(.msi)]button  ->  install&setup.
+* TypeScript Compiler
+	* open cmd prompt  ->  npm install -g typescript
+* TypeScript Executer
+	* open cmd prompt  ->  npm install -g tsx
+* VSCode editor -> to write code.
+	* visit: https://code.visualstudio.com/download  ->  click [windows]button  ->  wait for autodownload  ->  install&setup
+* create a folder for files.
+
+Execute in Cmd/Terminal (run code):
+	open command prompt in the folder which is used save your TS files.
+* direct execution
+	* tsx (fileName.ts)
+	* tsx (SubFoldName)/(fileName.ts)
+* create JavaScript file of TypeScript file then Execute ---> to Compile TS into JS.
+	* tsc (FileName.ts) -> node (FileName.js)
+	* tsc (SubFolderName)/(FileName.ts) -> node (SubFolderName)/(FileName.js)
+* Error when run tsc command first time (cannot be loaded Running scripts is disabled on this system)
+	* Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+

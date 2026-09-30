@@ -1,0 +1,9 @@
+{"data":{
+
+    "uname" :"standard_user",
+    "pswd":"secret_sauce",
+    "firstName": "kiresh",
+    "lastName": "Babu",
+    "zipCode": "600004",
+    "URL": "https://www.saucedemo.com/"
+}}

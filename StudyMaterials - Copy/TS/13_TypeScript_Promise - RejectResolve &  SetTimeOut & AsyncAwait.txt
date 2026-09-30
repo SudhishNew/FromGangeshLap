@@ -1,0 +1,182 @@
+    TypeScript - Promise - RejectResolve, TimerMethods, AsyncAwait
+----------------------------------------------------------
+Promise: 
+ * A Promise is an object that represents the result of an asynchronous operation — which may complete in the future, not immediately.
+     * Resolved (Fulfilled) - success ---> .then ((data)=>{console.log(data);}) 
+     * Rejected - failed ---> .catch((data)=>{console.log(data)};)
+     * Pending - still processing
+     * finally(()=>{console.log(run complete)}) ----> what ever happens resolve/reject this executes at the end.
+ * setTimeout - used to execute a function after a delay (in milliseconds), it a way to use Promises.
+ * Async, Await: async/await is NOT Promises, but a way to use Promises 
+--------------------------------------------------------------------------------------------------------------------
+
+Single Promise:
+  Promise.resolve()
+	Creates an already resolved promise.
+  Promise.reject()
+	Creates an already rejected promise.
+
+Multiple promises: (includes single promise)
+  Promise.all()
+	Runs multiple promises in parallel and waits for all to succeed.
+	Fails fast  if one fails, whole result rejects.
+  Promise.allSettled()
+	Waits for all promises to finish, whether they succeed or fail.
+  Promise.race()
+	Returns the result of the first promise that settles (resolve or reject).
+  Promise.any()
+	Returns the first fulfilled promise (ignores rejections).
+----------------------------------------------------------------------------------------
+Syntax: 
+let promise1 :promise<string> =  new promise<string>((rsolve,reject)=>{
+  resolve (statement for resolve);
+  reject (statement for reject)
+})
+
+promise1.then(()=>{Statement if resoleved}).catch(()=>{Statement if rejected})
+
+
+Single Promise:
+
+let isTicket:boolean = false;
+function booking (): Promise<string> {
+    return new Promise((resolve, reject) => { ---------> promise
+        if (isTicket==true){
+            resolve('I got the Ticket')
+        } else {
+            reject('Ticket is Over...')
+        }
+    })
+}
+booking()
+.then((got)=>{  ---------> if promise fulfilled
+    console.log(got);})
+.catch((not)=>{  ---------> if promise in not fulfilled
+    console.log(not);})
+.finally(()=>{  ---------> Executes in both condition, promise fulfilled or not.
+    console.log('Call Your Friend...');})
+------------------------------------------------------------------------
+Multiple Promise:
+const pro1: Promise <string> = new Promise((resolve, reject) => {
+	resolve('Pass')
+})
+const pro2: Promise <string>  = new Promise((resolve, reject) => {
+	reject('Fail')
+})
+const pro3: Promise <string>  = new Promise((resolve, reject) => {
+	reject('Failure')
+})
+const pro4: Promise <string>  = new Promise((resolve, reject) => {
+	resolve('Success')
+})
+
+const prom: Promise <string>[]= [pro1, pro2, pro3, pro4];
+Promise.all(prom)
+   .then((out)=>{console.log('All:',out)})
+   .catch((not)=>{console.log('All:',not)})
+const prom1: Promise <string>[]= [pro1, pro2, pro3, pro4];
+Promise.allSettled(prom1)
+   .then((out)=>{console.log('Settle:',out)})
+   .catch((not)=>{console.log('Settle:',not)})
+const prom2: Promise <string>[]= [pro1, pro2, pro3, pro4];
+Promise.race(prom2)
+   .then((out)=>{console.log('Race',out)})
+   .catch((not)=>{console.log('Race',not)})
+const prom3: Promise <string>[]= [pro1, pro2, pro3, pro4];
+Promise.any(prom3)
+   .then((out)=>{console.log('Any:',out)})
+   .catch((not)=>{console.log('Any:',not)})
+-------------------------------------------------------------------------------
+Timer Methods:
+ * Timer Methods in TypeScript are built-in functions used to schedule code execution after a delay or repeatedly, without blocking the main program (asynchronous behavior).
+ * Timer Methods are asynchronous.
+* SetTimeout() - Execute a function after a delay (in milliseconds).
+* SetInterval() - Executes a function repeatedly at fixed intervals.
+* clearTimeout() - Cancels a scheduled setTimeout().
+* clearInterval() - Cancels a scheduled setTimeout().
+
+syntax 1 (toSet):
+ * setTimer(console.log(to be delayed), delay);
+syntax 2 (toClear):
+ * let TimeCancel = setTimer(console.log(to be delayed), delay);
+     clearTimer(TimeCancel)
+
+i.e.:
+ * setTimeout(() => {
+  console.log("Hello after 2 seconds");
+}, 2000);
+function greet() {
+  console.log("Welcome!");
+}
+setTimeout(greet, 3000);
+
+i.e.:
+console.log('Task Execute 1');
+let timeCancel = setInterval(()=>{console.log('Task tobe Executed 2')
+},1000);
+setTimeout(()=>{clearInterval(timeCancel);},5000)
+console.log('Task Executed 3');
+------------------------------------------------------------------------------------
+
+Async, Await:
+ * async/await is built on top of Promises
+ * A Promise is a core concept behind async/await
+ * async/await is NOT Promises, but a way to use Promises
+   * async --> makes function return Promise
+   * await --> It pauses execution until the Promise is resolved.
+   * await works only inside async functions
+   * Makes async code look like synchronous
+----------------------------------------------------------------------
+* Syntax 1 (named function):
+ async function functionName() {
+   let result = await someAsyncFunction();
+   return result;
+ }
+* Syntax 2 (arrow function):
+ const main = async () => {
+   let data = await fetchData();
+   console.log(data);
+ };
+---------------------------------------------------------------------------
+
+i.e. * async function main() {
+        try {
+         let data = await fetchData();
+          console.log(data);
+        } catch (error) {
+        console.log("Error:", error);
+        }
+      }
+
+* function fetchData(): Promise<string> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Data received");
+    }, 2000);
+  });
+}
+
+async function main() {
+  console.log("Start");
+
+  let data = await fetchData();
+
+  console.log(data);
+  console.log("End");
+}
+
+main();
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+
+
+
+
+

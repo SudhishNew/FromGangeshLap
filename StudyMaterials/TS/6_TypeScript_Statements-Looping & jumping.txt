@@ -1,0 +1,182 @@
+     TypeScript - Statements
+--------------------------------------------------
+  * Statment is a syntatic unit that expresses a specific action for the program to carry out.
+  * It is a complete instruction that tell the program to perform a specific action.
+-----------------------------------------------------------------------------------------------------
+
+Iteration Statements:
+
+ * Iteration is also called as Loop or Repeatation.
+ * Set of Statements or Block of statements can be repeated multiple times.
+ * We can mention how many times the statement should to repeat, it is called condition.
+ * A statement to be looped we need three important keys
+	* Initialization - The begining of the loop, The starting point
+		let i = 0: intial value is 0 / index value is 0
+	* condition - Till which point the loop should repeat, a boolean expression that determines the loop should Stop/Continue.
+	* incrementation/Decrementation - updates the variable after each iteration, moving it closer to the condition till it becomes false.
+		i++ / i-- : increases the value by 1 , i+=5 : increase the value by 5(specific value = specific increase).
+
+While Loop:
+     While loop executes the statement as long as the condition is TRUE.
+     first it will check the condition then it will executes the statements.
+     Keeps running until the condition becomes false (e.g., keeps asking password until correct).
+        Waiting for user to enter correct password → while(password != correct)
+ syntax: let a: number = intialization ;
+	 while(condition) ---> if condition mentioned as true it will be infinite loop -while(true)
+	 {
+	  statement;
+	  increment/decrement;
+	 };	
+    i.e. * print 1 to 5
+	   let a: number = 1;
+	   while(a <= 5)  //------->(condition becomes false when it reaches 6)
+	   {
+	    console.log(a); //------> out: 1, 2, 3, 4, 5
+	    a++;  //------> increment: 1, 2, 3, 4, 5, 6
+	   }
+
+         * print even numbers - Method 1:
+	   let b: number = 2;
+	   while(b <= 10)  //------->(condition becomes false when it reaches 12)
+	   {
+	    console.log(b); //------> out: 2, 4, 6, 8, 10
+	    b+=2;  //------> a=a+2 - increment: 2, 4, 6, 8, 10, 12
+	   }
+         * Method 2:
+	   let c: number = 1;
+	   while(c <= 10)  //------->(condition becomes false when it reaches 12)
+	   {
+	    if (c%2 == 0) //-----> checks the remaining value which divided by 2 is 0 (if true in,if false out) [(c%2 != 0) for odd]
+	     {
+	      console.log(c); //------> out: 2, 4, 6, 8, 10
+	     }
+	    c++;  //------> c=c+2 - increment: 2, 4, 6, 8, 10, 12
+	   }
+_____________________________________________________________________________________________________
+
+do-while loop:
+    do-while loop always executes the statement atleast once before checking the condition is TRUE.
+    first statements will be executed then it will check the condition to verify.
+    Runs at least once, then repeats if needed (e.g., menu is shown first, then repeats until exit).
+       Showing menu at least once → do { showMenu(); } while(choice != exit);
+ syntax: let a: number = intialization ;
+	 do ---> if condition mentioned as true it will be infinite loop -while(true)
+	 {
+	  statement;
+	  increment/decrement;
+	 } while(condition);
+    i.e. * print 6 to 0 (reverse):
+	   let a: number = 6;
+	   do  //------->(Executes the statement before condition check)
+	   {
+	    console.log(a); //------> out: 1, 2, 3, 4, 5
+	    a--;  ------> increment: 1, 2, 3, 4, 5, 6
+	   } while(a >= 0); //-------> (checks condition after execution)
+_________________________________________________________________________________________________________
+
+For Loop:
+   For loop is used when the number of iteration is known beforehand.
+   You know in advance how many times you want to repeat.
+   Runs a fixed number of times (e.g., showing top 10 students from 1 to 10).
+      Displaying top 10 students → for(i=1; i<=10; i++)
+ syntax: for (intialization; condition; increment/decrement) 
+	 {
+	  statement; 
+	 }
+  i.e. * print 1 to 10 :
+	 for (let a = 1; a <= 10; a++) 
+	  {
+	   console.log(a); 
+	  }
+       * print 1 to 10 even numbers :
+	 for (let a = 2; a <= 10; a+=2) 
+	  {
+	   console.log(a); 
+	  }
+       * print 1 to 10 odd numbers with if :
+	 for (let a = 1; a <= 10; a++) 
+	  {
+	   if(a%2==1)
+	    {
+	     console.log(a); 
+	    }
+	  }
+       * print 1 to 10 descending :
+	 for (let a = 10; a >= 1; a--) 
+	  {
+	   console.log(a); 
+	  }
+  ***  let a:number = 10; -------> global variable (let a)
+	 for (let a = 1; a <= 10; a++) --------> block scoped (let a)
+	  {
+	   console.log(a); 
+	  }
+  ***  let a: number ;
+	 for (a = 1; a <= 5; a++) --------> global scoped (let a)
+	  {
+	   console.log(a); --------> (out: 1,2,3,4,5) (reference)
+	  }
+	   console.log(a); --------> (out: 6) (actual) (after 5 iterated value saved in global scope)
+  ***  let a: number ; -------> not assigned
+	 for (let a = 1; a <= 10; a++) --------> block scoped (let a)
+	  {
+	   console.log(a); 
+	  }
+	   console.log(a); --------> (compile type error) (when it exits out of loop it becomes gloal)
+  ***  let a: number ;
+	 for (a = 1; a <= 10; a++); ----> (loop only inside this statement, final iterated value only comes out)
+	   console.log(a); -----> (out: 11)
+
+Key Differences
+Feature	                      for loop            while loop           do...while loop
+Condition                 check Before loop      Before loop            After loop
+Executes at least once	      ❌ No	            ❌ No                ✅ Yes
+Best use case            Known iterations     Unknown iterations    Must run at least once
+Syntax                     complexity           Compact Simple        Slightly different  
+ 
+Loop Type	Condition Checked	Iteration Step    Body Execution Guaranteed?
+for               Before block         After block (auto)         No
+while             Before block         Manual (anywhere)          No
+do…while          After block          Manual (anywhere)         Yes
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Jumping/continue statement:
+    these statements are control flow statements
+    controls the normal sequential execution of code by transferring it to a different part of the code
+    conditional exits, loop controls, unconditional jumps, function returns.
+
+break statement with loop:
+    whenever you want to break the loop or exit the loop
+   for (let a = 1; a <= 10; a++)
+   {
+     if (a==5)  //-----> (if this is after console loop stops at 5 and will print 5)
+      {
+       break; //------> (loop stops at 5 and won't print 5)
+      }
+     console.log(a); //-------> (out: 1, 2, 3, 4)
+   }
+
+continue statement with loop:
+  whenever you want to skip a step and continue the loop
+  * for (let a = 1; a <= 10; a++)
+    {
+      if (a==5)  -----> (if this is after console loop stops at 5 and will print 5)
+       {
+        continue; ------> (loop skips 5 and countinues)
+       }
+      console.log(a); -------> (out: 1, 2, 3, 4, 6, 7, 8, 9, 10)
+    }
+  * for (let a = 1; a <= 10; a++)
+    {
+      if (a%2 == 0)  ----->  or(a==1 || a==3 || a==5 || a==7 || a==9)
+       {
+        continue; ------> (loop skips even numbers and countinues)
+       }
+      console.log(a); -------> (out: 1, 3, 5, 7, 9)
+    }
+
+
+
+
+
+

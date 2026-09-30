@@ -1,0 +1,216 @@
+    TypeScript - Function - CallBack & Overloading & Closure
+----------------------------------------------------------
+ * Function is a block of code designed to perform a specific task.
+ * Function is a block of code which we can reuse.
+ * Function is used to call whenever we need to reuse in code.
+-------------------------------------------------------------------------
+
+Call-Back Function:
+  * A callback is a function passed as an argument to another function so that it can be executed later, either after a task completes or when a specific event occurs.
+  * It is commonly used in asynchronous programming and event handling.
+ Syntax: function func1(cb: any)  -------> passing function as argument into another function.
+	  {
+	    statement;
+	    cb();    ------> where it should execute.
+	   }
+	function func2()
+	 {
+	   statement;
+	  }
+	func1(func2); ----> func2 is invoked in func1, by calling func1
+
+ i.e. * function add(a:number, b:number, cb:any) 
+	  {
+	    console.log(a+b);
+	    cb();    
+	   }
+	function stateRes()
+	 {
+	   console.log("A and B addded and the result is",a+b);
+	  }
+	add(25, 24, stateRes);
+ * Passing an argument in function which is callBack:
+	** Method 1:
+	   function popMessage(message: any) {
+	       message('Johnson');
+	       console.log("Welcome to Bios-Tech..!");
+	   }
+	   function greet( name:string ) {
+	       console.log('Good Morning....',name);
+	   }
+	   popMessage(greet);
+	** Method 2:
+	   function popMessage(msg :(message:string) => void) {
+	    msg('Johnson');
+	    console.log("Welcome to Bios-Tech..!");
+	   }
+	   function greet( name:string ) {
+	      console.log('Good Morning....',name);
+	   }
+	   popMessage(greet);
+	** Method 3:
+	   function popMessage(message: any) {
+	       message();
+	       console.log("Welcome to Bios-Tech..!");
+	   }
+	   function greet( name:string ) {
+	       console.log('Good Morning....',name);
+	   }
+	   popMessage(()=> greet('Andrew'));
+
+Callack Hell / Pyramid Of Doom:
+    Callback Hell is a programming pattern where multiple asynchronous callbacks are nested inside one another, resulting in deeply indented, hard-to-read, and difficult-to-maintain code. It is commonly avoided by using Promises or async/await.
+ function func1 (lion :()=> void):void {
+     lion();
+   console.log('This is Task 1...!');
+
+ }
+ function func2 (lion :()=> void):void {
+   console.log('This is Task 2...!!');
+   lion();
+ }
+ function func3 (lion :()=> void):void {
+     console.log('This is Task 3...!!!');
+     lion();
+ }
+
+ func1(()=>{
+     func2(()=>{
+         func3(()=>{
+             console.log('Task Completed');
+
+         })
+     })
+ })
+---------------------------------------------------------------------------------------------------------------
+Overloading Function:
+  * Defining Multiple version of a function with the same name but with different parameters or return types
+  * function that works differently based on the input types
+  * steps to follow:
+	* List all possible ways (overload signatures) the function can be called.
+	* One actual Function implimentation that handles all cases.
+	* the implimentation must be compatible with all overload signatures (possible ways).
+ Syntax:
+   function add(a: number, b: number): number; ------> version 1
+   function add(a: string, b: string): string; ------> version 1
+
+   function add(a: type, b: type): any {
+        if (conditon typeof)
+	  {
+	    statement;
+	   } else
+	   {
+	     statement;
+	     }
+   }
+   console.log(add(num1, num2));  ----> version 1 invoke
+   console.log(add("str1", "str2"));  ----> version 2 invoke
+
+   * Method 1: Different types of parameters
+     function inFo(a: number): number;
+     function inFo(a: string): string;
+
+     function inFo(a:(number|string)): string|number {
+         if (typeof a == 'number')
+	  {
+	    return(`User Id : ${a}`);
+	   } else
+	   {
+	     return(`User Name : ${a}`);
+	     }
+	}
+     console.log(inFo(8521));
+     console.log(inFo('Matthew'));
+   * Method 2: Different number of parameters
+     function add(a: number, b: number, c?: number): number;
+     function add(a: number, b: number,): number;
+     function add(a:number, b: number, c?: number): number {
+         if ( c !== undefined)
+	  {
+	    return(a+b+c);
+	   }
+	  return(a+b);
+	}
+     console.log(add(85, 21));
+     console.log(add(12, 23, 45));
+   * Method 3: Different return types
+     function differ(val: string): string;
+     function differ(val: number): number;
+     function differ(val: string|number): string|number
+       {
+         if (typeof val === 'string')
+	   {
+	     return val.toUpperCase();
+	     }
+	 else 
+	  {
+	    return val*5;
+	   }
+	};
+     console.log(differ('Matthew'));
+     console.log(differ(5));
+   * Method 3: Different return types
+     function person(name: string): string;
+     function person(age: number): string;
+     function person(isMarried: boolean): string;
+     function person(input: number|string|boolean): string
+      {
+	if (typeof input === 'string')
+	 {
+	   return `Hi ${input}. nice to meet you...!`;
+	  }
+	else if (typeof input === 'number')
+	 {
+	   return `So, you are ${input} years old...!`;
+	  }
+	else 
+	 {
+	   let ret =input ? 'Married' : "Unmarried";
+             return ret;
+	  }
+	};
+       console.log(person('Sudish'));
+       console.log(person(35));
+       console.log(person(false));
+---------------------------------------------------------------------
+Closure Function:
+ * A closure function is a function that remembers and can access variables from its outer (parent) function even after the outer function has finished executing.
+Method 1:
+function myVariable (){
+    let a = 25;
+    let b = 57;
+    function maths(){
+        let c = a*b;
+        console.log(c);
+    }
+    return maths;
+}
+let value1 = myVariable(); 
+value1 ();
+
+Method 2:
+ function outer() {
+   let count = 0;
+   function inner() {
+     count++;
+     console.log(count);
+   }
+   return inner;
+ }
+ const counter = outer();
+
+ counter(); // 1
+ counter(); // 2
+ counter(); // 3
+----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+

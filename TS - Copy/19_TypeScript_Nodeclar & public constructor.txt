@@ -1,0 +1,25 @@
+No delaration - Public Constructor
+---------------------------------------------
+abstract class Employee {
+  company = "ABC Ltd";
+  abstract id: number;
+  constructor(public name: string) {}
+  display() {
+    console.log(`${this.name} works at ${this.company}`);
+  }
+  abstract work(): void;
+}
+
+class Developer extends Employee {
+  id = 101;
+  constructor(name: string) {
+    super(name);
+  }
+  work(): void {
+    console.log("Writing TypeScript code");
+  }
+}
+
+const dev = new Developer("Alice");
+dev.display();
+dev.work();

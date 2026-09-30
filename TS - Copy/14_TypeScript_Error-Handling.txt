@@ -1,0 +1,110 @@
+     TypeScript - Error Handling
+--------------------------------------------------
+Error Handling:
+ * How a program detects, manages, and responds to runtime problems without crashing(like invalid input, failed API calls, or unexpected values).
+ * Error handling is a way to manage errors in your code so the program doesn’t crash unexpectedly.
+ * error handling uses:
+   * program constructs using 'try','catch','finally', 'Throw', 'Error' keywords.
+   * throw new Error() - This creates a proper error object using the built-in Error class.
+------------------------------------------------------------------------------------------------
+Try:
+  A block that contains code that may throw an Error/Exception.
+Catch:
+  A block that catches and handles the Error/Exception thrown from the Try block.
+Finally:
+  A block that always executes after Try/Catch, whether an Error/Exception occurs or not, and used for cleanup operations.
+
+Error Types (inbuilt):
+ Error is the base (parent) class. Other error types are child classes (derived classes)
+ * Error - Common Base Error if you don't know the type
+ * TypeError - When wrong type used
+ * ReferenceError - When variable not defined
+ * SyntaxError - When invalid syntax (usually compile-time)
+ * RangeError - When value out of allowed range
+ * URIError - When wrong URI encoding/decoding
+console:
+  * error.message - The actual error description (human-readable message)
+  * error.name - The type of error
+  * error.stack - The stack trace (where the error happened)
+  * error.cause - reason for the error.
+
+Syntax:
+try {
+  // Code that might throw an error
+} catch (error) {
+  // Handle the error
+} finally {
+  // Optional: always runs after try or catch (cleanup, etc.)
+}
+-----------------------------------------------------
+try1:
+console.log('hi');
+console.log(a);
+console.log('hello');
+
+Try2:
+try {
+    console.log('hi');
+    console.log(a); //---------> error occured 
+    console.log('hello'); //--------> skipped and goes stright to execute catch block
+} catch (error) {
+    console.log('Error Found...!');
+    if (error instanceof Error) {
+        console.log(error.message);
+    }
+}
+finally {
+    console.log('Execution Complete !');
+}
+console.log('hello !');
+------------------------------------------------------------------------------
+try {
+    console.log('hi...!');
+    function add(a:number, b: number){
+        console.log(a+b);
+    }
+    add(2,'d');
+    console.log(a);
+    console.log('Hello...!');
+} catch (bug) {
+    console.log('Oops...!');
+    if (bug instanceof RangeError) {
+        console.log('ErrorRange:',bug.message);
+    } else if (bug instanceof URIError){
+        console.log('ErrorURI:',bug.message);
+    } else if (bug instanceof ReferenceError){
+        console.log('ErrorReference:',bug.message);
+        console.log('ErrorName:',bug.name);
+    } else if (bug instanceof TypeError){
+        console.log('ErrorType:',bug.message);
+    } else {
+        console.log(' Unknown Error Occured.....')
+    } 
+}
+finally {
+    console.log('Execution Complete !');
+}
+console.log('hellello !');
+console.log('--------------------------');
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

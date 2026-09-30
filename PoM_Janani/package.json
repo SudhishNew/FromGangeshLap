@@ -1,0 +1,19 @@
+{
+  "name": "pom_janani",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^22.20.2"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.3",
+    "xlsx": "^0.18.5"
+  }
+}

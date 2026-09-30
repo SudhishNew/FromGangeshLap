@@ -14,7 +14,7 @@ test('Single DD', async({page})=>{
 
 })
 
-test('multi DD', async({page})=>{
+test.only('multi DD', async({page})=>{
     await page.goto('https://testautomationpractice.blogspot.com/')
     await page.locator('#colors').scrollIntoViewIfNeeded()
     await page.locator('#colors').selectOption([{index:0},{value:'yellow'},{label:'White'}])

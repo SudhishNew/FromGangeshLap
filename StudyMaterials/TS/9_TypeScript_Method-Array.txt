@@ -1,0 +1,107 @@
+     TypeScript - Methods - Array
+--------------------------------------------------
+ Methods:
+  * Methods are built-in functions in programming Language that let you perform operations on data.
+  * All methods are functions, but not all functions are methods because method belongs to an object
+  * Methods ends with () .
+ Array:
+  * Array is a data structure used to store multiple values in a single variable.
+  * Array can hold the same data type or different Data types.
+  * Arrays are declared using '(type)[ ]' symbol or generic keyword 'array<type>'.
+  * Index value of the first element in an Array starts from 0 and the last element value (n-1), if 5 is last index then (5-1)
+  * Arry is an ordered collection of elements, the order how the values are stored.
+--------------------------------------------------------------------------------------------------------------------------------
+ let age: number [] = [15, 32, 25, 71, 32, 19];
+ let fruits: string [] = ['Apple', 'Blueberry', 'mongo', 'orange'];
+  console.log("Array Numbers:",age);
+  console.log("Array strings:",fruits);
+
+ length: (it is atrribute, not method)
+  console.log("size of age:",age.length);
+  console.log("size of strings:",fruits.length);
+
+Methods:
+push(): adds single/Multiple elements to the end of an existing array (and returns the array Length)
+   syntax: array.push(element1, element2, element3)
+   age.push(17,72);
+   console.log("age after push:",age);
+
+pop(): removes single elements at the end of an array (and returns the value)
+   syntax: array.pop();
+   let endAge = age.pop();
+   console.log("Removed Element with Pop:",endAge);
+   console.log("age after pop:",age);
+
+shift(): removes first element of an array (and returns the value)
+   syntax: array.shift();
+   let endAge = age.shift();
+   console.log("Removed Element with shift:",endAge);
+   console.log("age after shift:",age);
+
+unshift(): adds single/Multiple elements to the begining of an array (and returns the array Length)
+   syntax: array.unshift(element1, element2, element3);
+   fruits.unshift(Avacado,  Kiwi, Bluberry);
+   console.log("fruits after unshift:",fruits);
+
+concat(): merges two or more array in to a single array (same type only/type safty)
+   syntax: array.concate(array1,[value1,value2], array2);
+   let newAge = age.concat([12,23], [29, 55, 62])
+   console.log(' Concated Array of ages:',newAge)
+
+slice(): Extracts a section of an array. (and returns the new array)
+   syntax: array.slice(index, end); //----> (end is excluded)
+   let newFruits =  array.slice(0, 3);
+   console.log(newFruits,'- Extracted from fruits Array using slice');
+
+splice(): Replaces a section from an array anywhere we want. (and returns the value)
+   syntax: array.splice(index,deleteCount,addElement1, addElement2.....addElementN);
+   let removeFruit =  fruits.splice(1, 2);
+   console.log(removeFruit,'- removed from fruits Array using splice');
+   console.log(fruits,'- fruits Array after splice');
+   let removeFruit =  array.splice(1, 1, 'WoodApple', 'DragonFruit');
+   console.log(removeFruit,'- removed from fruits Array using splice');
+   console.log(fruits,'- fruits Array after splice');
+
+indexOf(): Finds the Index of an Element, if not found it will return (-1)
+   syntax: array.indexOf(searchElement);
+   let index = age.indexOf(25);
+   console.log('Index of 25: ',index);
+   let index = age.indexOf(26);
+   console.log('Index is 26:',index);
+   let index = age.indexOf(32,1);
+   console.log('Index of 25: ',index);
+
+include() - checks if an element is exist, returns boolean.
+   syntax: array.include(searchElement,fromIndex);
+   let blueberry = fruits.include('Bluberry');
+   console.log('blueberry Available? ',blueberry);
+   let blackberry = fruits.include('Bluberry');
+   console.log('blueberry Available? ',blackberry)
+
+toString() - converts array into string
+   syntax: array.toString();
+   let numToStr = age.toString();
+   console.log('String Of Age: ',numToStr);
+
+join('') - converts array into string with the given value
+reverse(); - reverses each element in an existing Array 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

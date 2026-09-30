@@ -1,0 +1,127 @@
+     TypeScript - Methods - String
+--------------------------------------------------
+ Methods:
+  * Methods are built-in functions in programming Language that let you perform operations on data.
+  * All methods are functions, but not all functions are methods because method belongs to an object
+  * Methods ends with () .
+ String:
+  * string is a text value or a group of characters (abcd, fruit, etc....).
+  * string should be mentioned in single quotes(' '), double quotes(" "), backtick(` `).
+  * string values are Case sensitive ( Apple, apple - are not the same).
+  * string is immutable, the value cannot be changed after it is created.
+    * You cannot modify the original string
+    * Any operation that seems to change it, actually creates a new string.
+  * Index value of the first element in string starts from 0 
+--------------------------------------------------------------------------------------------------------------
+declaration of string:
+ let str = 'this is a string';
+ let str1 = "this is a string 1";
+ let str2 = `this is a string 2`;
+  console.log(str);
+  console.log(str1);
+  console.log(str2);
+  console.log("This is string 3");
+
+Backtick: 
+  * Backtick is used to insert a number/string inside a string. (Templete Literal)
+  * Backtick is also used to create a Multiple line String.
+  let num = 10 ;
+   console.log("This is number is: ",back);
+   console.log(`I have ${back} Apples`); -----> this method wouldn't work in single/double quotes
+  let sentence:` oh god Beautiful !
+		 oh god Beautiful !`
+
+ length: (length is an atrribute, not method)
+   let says: string = 'I have an Orange in my Hand';
+    console.log("size of strings:",says.length);
+--------------------------------------------------------------------
+Syntax: let str :string = 'Data';
+       str.method()
+
+    let name: string = 'AbRaHaM LiNcOlN is holding a phone..!';
+Case convertion:
+ * string.toUpperCase() - converts the string into upper case
+ * string.toLowerCase() - converts the string into lower case
+     console.log(name.toUpperCase());
+     console.log(name.toLowerCase());
+    let name1 = name.toUppercase();
+    let name2 = name.toLowercase();
+     console.log("Upper Case Format: ",name1);
+     console.log("Lower Case Format: ",name2);
+
+Index Access:
+ * string.charAt(index No.) - retrive the value at the index.
+ * string.indexOf(string) - retrive the index of the value of first Occurence.
+ * string.indexOf(string,7) - 7 the first ocurrence afteer the 7th index.
+ * string.lastIndexOf(string) -  - retrive the index of the value of Last Occurence.
+ * string.substring(starting index, ending index -1) - gets values between the indexes.
+     console.log("Value at 6th index: ",name.charAt());
+     console.log("Value at 7th index: ",name.charAt(7));
+     console.log("Value at 40th index: ",name.charAt(40));
+     console.log("index of N Upper Case: ",name.indexOf('N'));
+     console.log("index of N Lower Case: ",name.indexOf('n'));
+     console.log("index of 'holding' starts from: ",name.indexOf('holding'));
+     console.log(name.substring(19,26));
+
+Value Verify: (returns Boolean: true/false)
+ * string.includes('value') - verifies the value exists in String.
+ * string.startsWith('value') - verifies the String is starts with the value.
+ * string.endsWith('value') - verifies the String is Ends with the value.
+     console.log("string includes 'hold': ",name.includes('hold'));
+     console.log("string includes '!': ",name.includes('!'));
+     console.log("string includes '!': ",name.includes('!',5)); ---> search after index
+     console.log("string starts with 'AbRaHaM': ",name.startsWith('AbRaHaM'));
+     console.log("string starts with 'Abraham': ",name.startsWith('Abraham',4)); 4 ----> index value
+     console.log("string ends with 'A': ",name.startsWith('A'));
+     console.log("string ends with '!': ",name.endsWith('!',5)); 5 ----> length of the string
+     console.log("string ends with 'phone...!': ",name.endsWith('phone...!'));
+
+String Manipulation:
+ * string.replace(the value, replace with) - Replaces the current value with given value
+    let name2 = name.replace('phone','HeadPhone');
+      console.log(name.replace('phone','Laptop'));
+      console.log(name2);
+ * string.split(value) - breaks the string into multiple parts based on the value given.
+    let name2 = name.split(' ');
+      console.log("string splited by 'h': ",name.split('h'));
+      console.log("string splitted by ' ': ",name2);
+      console.log("First Name: ",name2[0]!.toUpperCase());
+      console.log("Last Name: ",name2[1]!.toLowerCase());
+ * trim() - Remove the Spaces at the begining and at the End of the String
+ * trimStart() - Remove the Spaces at the begining of the String
+ * trimEnd() - Remove the Spaces at the End of the String
+    let work: string = '   he is working in a company.    ';
+      console.log('start',work,'End');
+      console.log('trim at string:',work.trim(),'End');
+      console.log('trim at starting string:',work.trimStart(),'End');
+      console.log('trim at ending string:',work.trimEnd(),'End');
+ * string.concat(string2) - used to combine two strings.
+    let str: string = 'he is working in a company.';
+    let str2: string = 'I know Him.';
+      console.log(name.concat(str));
+      console.log(name+str); -----> it works. but, does Arithmetic Operation. NOT RECOMMENDED
+      console.log('I know Him. ',name.concat(str));
+      console.log(name.concat(str).concat(str2));
+ * string.padEnd : adds given string at the End until length reaches the given numbers.
+	console.log(str.padEnd(25,'ufhwoeufewifuewhuwfh'));
+ * string.padStart : adds the given string ath the beginning until length reaches the given numbers.
+	console.log(str.padStart(25,'ufhwoeufewifuewhuwfh'));
+
+Ascii value returns: (param Expect - index Based, but, Emoji holds Two Index Values )
+let str = '🤩 this is a symbol'
+charCodeAt - console.log(str.charCodeAt(0)); ------> will return incorrect values of emojis.
+codePointAt - console.log(str.codePointAt(0)); ------> will return Ascii value including Emojis.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,153 @@
+    TypeScript - Statements
+-----------------------------------------------
+  * Statment is a syntatic unit that expresses a specific action for the program to carry out.
+  * It is a complete instruction that tell the program to perform a specific action.
+-----------------------------------------------------------------------------------------------------
+
+Conditional/ Decision-Making Statements:
+  * Conditional statements are decision-making statements that execute different blocks of code based on whether a condition is true or false.
+  * boolean happens whenever you use relational or logical operators.
+  * Use it Whenever you want to execute a group of statements based on a certain boolean condition.
+
+ If:
+   * The if statement executes a block of code only if the condition is true.
+  * If Condition:
+       Syntax: If (condition)
+		{
+		  code to be executed, if the conditon is TRUE
+		}
+     i.e. let age:number = 27;
+          let age1:number = 17;
+	  if(age >= 18)
+	    {
+	    console.log("This person is eligible to Vote.") --------> this statement will print in terminal (condition True (age >= 18))
+	    }
+	  if(age1 >= 18)
+	    {
+	    console.log("This person is not eligible to Vote.") --------> this statement will not print in the terminal (condition false (age is not>= 18))
+	    }
+  * Nested If Condition:
+       Syntax: If (condition)
+	{
+	   If (condition)
+	     {
+	  code to be executed
+	     }
+	}
+     i.e. let country:string = "India";
+          let age:number = 22;
+	  let hasLicense = 'Yes';
+	  if(country == 'India')
+	    {
+	     if(age >= 18)
+	       {
+		if(hasLicense == 'Yes')	
+		  {
+		    console.log("You may go now...");
+		  }
+		}
+	     }
+  * if else condition:
+    * The if..else statement executes one block if the condition is true and another block if it is false.
+       Syntax: If (condition)
+		{
+	  	  code to be executed, if condition true
+		}
+		else
+		{
+		  code to be executed, if condition false 
+		}
+       i.e. let score:number = 67;
+ 	     if(score >= 50)
+		{
+		  console.log("he crossed half century.")
+		}
+	     else
+		{
+	 	  console.log("he didn't make it to half century.")
+		}
+  * else if condition:
+     * The else...if statement executes one block if the condition is true and another block if it is false.
+       Syntax: If (condition)
+		{
+	  	  code to be executed
+		}
+		else if (condition)
+		{
+		  code to be executed
+		}
+		else
+		{
+		  code to be executed
+		}
+       i.e. let time:number = 18;
+ 	     if(time < 12)
+		{
+		  console.log("Hi.! Good Morning to you.")
+		}
+		else if(time < 16)
+		{
+		  console.log("Hi.! Good Afternoon to you.")
+		}
+		else if(time < 20)
+		{
+		  console.log("Hi.! Good Evening to you.")
+		}
+	     else
+		{
+	 	  console.log("Hi.! Good Night to you.")
+		}
+  * Switch case statement:
+	The Switch statement selects one block to be executed that matches an Expression. in some cases switch is more reliable than if, if else.
+	syntax: switch(Expression)   ------> condition-True/False , Expression - Can be anything
+		{
+		case 1: statement;   ------> if the expression matches with the case 1, the statement will be executed.
+			break;    -------> if the case1 statement executed it will break out of the entire switch block
+		case 2: statement;
+			break;
+		case 3: statement;
+			break;
+		default: statement; -----> if the exprssion didn't match with the case values, then this statement will be executed.
+		}
+	i.e. * let day: number = 4;
+		switch(day)
+		{
+		case 1: console.log('Monday');
+			break;
+		case 2: console.log('Tueday');
+			break;
+		case 3: console.log('Wedenday');
+			break;
+		case 4: console.log('Thursday');
+			break;
+		case 5: console.log('Friday');
+			break;
+		case 6: console.log('Saturday');
+			break;
+		case 7: console.log('Sunday');
+			break;
+		default: console.log('Warning: Invalid Weekday.!');
+		 }
+	     * let a:number, b: number;
+		a = 20,  b = 10;
+		switch(a-b)
+		{
+		case 5: console.log('The Result is: FIVE');
+			break;
+		case 10: console.log('The Result is: TEN');
+			break;
+		case 15: console.log('The Result is: FiFTEEN');
+			break;
+		case 20: console.log('The Result is: TWENTY');
+			break;
+		default: console.log('Warning: The Resule is Something Else.!');
+              	}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+

@@ -1,0 +1,113 @@
+     TypeScript - Oops - Class
+------------------------------------------------------------
+ 
+ Object-Oriented Programming System ( OOPS):
+  * Object-Oriented Programming (OOP) is a programming is the concept of “objects”—self-contained units that combine Properties and Methods that operate on that data.
+     * Properties (variables/attributes) => what the object has
+     * Methods (functions) => what the object can do
+ Class :
+  * class is a fundamental concept in Object-Oriented Programming (OOP). It acts like a blueprint or template for creating objects.
+  * A class defines:
+     * Class => Blueprint of a house
+     * Object => Actual house built using that blueprint
+--------------------------------------------------------------------------------------------------------------------
+* Readonly , Optional & Static Property:
+  * readonly , static are keywords , while optional is wasn't.
+  * readonly is used to assign value only once to variable thru the constructor, and then it cannot be changed.
+  * optional property may or may not be present in the object. It’s marked with a '?'.
+  * static property is a property that belongs to the class itself, not to individual Object of the class.
+     * static properties/methods can directly accesed from class.
+     * static properties/methods are common to ll objects.
+     * static properties/method can be modified using any object.
+class Student {
+	readonly schoolName: string;
+	static id = 8020;
+	static count = 0;
+	studentId: number;
+	studentName: string;
+	studentContact: number;
+	studentContact2?: string | null;
+constructor (schoolName: string, studentName: string, studentContact: number, studentContact2?: string ){
+	this.schoolName = schoolName;
+	this.studentId = Student.id++;
+	this.studentName = studentName ;
+	this.studentContact = studentContact;
+	this.studentContact2 = studentContact2 ?? null;
+	Student.count++;
+	}
+	getContact(): string { return `Name: ${this.studentName}, Contact: ${this.studentContact}`} ;
+	studentInfo(): string { 
+		return `School-${this.schoolName}
+		Name-${this.studentName}
+		ID-${this.studentId} Phone-${this.studentContact} Email-${this.studentContact2 ?? 'N/A'}`}
+}
+let student1 = new Student ('Vallalar Hr. Sec. School', 'Abraham', 5544332211);
+let student2 = new Student ('Maharishi Hr. Sec. School', 'Benjamin', 9988776600, 'benjamin421@gmail.com');
+let student3 = new Student ('MCC hr. Sec. School', 'Charles', 9876098760, 'charles5421@yahoo.com');
+let student4 = new Student ('APJ ABDUL KALAM Public School', 'David', 5432154321);
+console.log(student1.getContact());
+console.log(student1.studentInfo());
+console.log(student2.getContact());
+console.log(student2.studentInfo());
+console.log(student3.getContact());
+console.log(student3.studentInfo());
+console.log(student4.getContact());
+console.log(student4.studentInfo());
+// student1.schoolName = 'Thiruvalluar Hr. Sec. School'; ------> Cannot assign to 'schoolName' because it is a read-only property.
+// student1.studentName = 'Alex';  ------> This will work
+console.log('No. of Parameters:',Student.count);
+console.log('No. of Students:',Student.count);
+--------------------------------------------------------------------------------------------------------------------------------------
+Method Overloadeing, Consturcutor Overloading:
+Method Overloading:
+  * Defining Multiple version of a function with the same name but with different parameters or return types
+  * function that works differently based on the input types
+  * steps to follow:
+	* List all possible ways (overload signatures) the function can be called.
+	* One actual Function implimentation that handles all cases.
+	* the implimentation must be compatible with all overload signatures (possible ways).
+constructor Overloading:
+  * constructor overloading works the same way as method overloading
+  * Defining multiple constructor signatures(version), but only one implementation.
+
+class calculate {
+constructor ()  -------> overloaded constructor (default)
+constructor (a:number, b:number)  -------> overloaded constructor (parametrized)
+constructor (a?:number, b?:number){
+  if (a!== undefined && b!==undefined){
+    console.log("Addition of A&B:",a+b)
+		}
+  else {
+    console.log('number missing for calculation..!')
+		}
+	}
+ multiple(a:number,b:number,):number -------> overloaded Method (Two parameters)
+ multiple(a:number,b:number,c?:number):number -------> overloaded Method (Three parameters)
+ multiple(a:number,b:number,c?:number):number {
+  if (c!==undefined){
+     return a*b*c;
+	}
+     return a*b;
+		}
+}
+let calc1 = new calculate();
+let calc2 = new calculate(12,33);
+console.log(calc1.multiple(5,5,2));
+console.log(calc2.multiple(10,20,2));
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

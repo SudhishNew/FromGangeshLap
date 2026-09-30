@@ -1,0 +1,158 @@
+    TypeScript - Function - Named , Anonymous & Arrow
+--------------------------------------------
+ * Function is a block of code designed to perform a specific task.
+ * Function is a block of code which we can reused.
+ * Function is used to call whenever we need to reuse in code.
+-------------------------------------------------------------------------
+
+Named / Anonymous / Arrow Functions:
+
+Named Function:
+  * A function that is declared with a name is named functon.
+  * Named function should hava a name followed by function keyword.
+  Syntax: function functionName(parameter): returntype
+	    {
+	      block of code
+	    }
+
+	  functionName (argument); 
+ 1 - function - keyword
+ 2 - functionName - name of the function we used to invoke.
+ 3 - parameter - it act as a placeholders for the values/Argument the function will receive later. single or multiple parameters can be passed.
+ 4 - returntype - if the function rturns a value we have to mention the type or type inference will take. if there is no return we can mention void. 
+ 5 - { block of code } - single or multiple statements that should be executed when we call the function.
+ 6 - functionName (argument)- How we call or recall the functon, to invoke the function.
+ 7 - (argument) - The actual values passed to the function when it is called that we need to execute in the block of code
+
+function without return type:
+ i.e. * function greet (morning: string): void 
+         {
+	   console.log(morning);
+         };
+	greet ("good Morning");
+      * function add (a:number,b:number): void 
+         {
+	   console.log(a+b);
+         };
+	add (25, 85);
+	add (205, 875);
+	add (8, 8);
+      * function maths (a:number,b:number): void 
+         {
+	   console.log(a+b);
+	   console.log(a-b);
+	   console.log(a*b);
+	   console.log(a/b);
+	   console.log(a%b);
+	   console.log(a**b);
+         };
+	maths (8, 8);
+
+function with return type:
+      * function math (a:number,b:number): number 
+         {
+	   return a+b;
+	   return a-b;
+	   return a*b;
+         };
+	console.log(math (8, 5));   -------> invoke method 1
+	let res: number = math (8, 5));   -------> invoke method 2
+	console.log(math (add);   -------> invoke method 1
+
+named function with rest parameter: (multiple values for parameter)
+ * function addnumbers (...nums: number []): number
+    {
+      let i;
+      let sum: number = 0;
+      for (let i=0; i<num.length; i++)
+       {
+         sum = sum + nums[i]! ;
+        }
+      console.log ("sum of the numbers:", sum);
+     }
+   addnumbers(13,15,17);
+ * function elements (...element: (number|string) []): number
+    {
+      return element.length;
+     }
+    console.log(elements ('john',23,25,'solomon',22,28));
+
+named function with optional parameter:
+  * if we assigned 3 parameters and 2 value we can make third parameter optional with ? operator. 
+  * if first parameter is optional the followed parameter should be optional. else compile time error
+ * function option(name:string, id:number, mail?: string)
+    {
+     console.log("Employee Name:",name);
+     console.log("Employee ID:", id);
+     console.log("Employee MAIL.ID:",mail);
+     }
+    option('sardar', 8521, 'sardar@8521');
+named function with Default parameter:
+ * function offer(price:number, discount:number = 8): void
+   {
+    console.log((discount/=price)*100);
+    }
+   offer(2000,30)
+-----------------------------------------------------------------------------------------------------------------
+
+Anonymous/Nameless Function:
+   * Anonymous Function are also know as Nameless function or Unnamd function
+   * The function that does not have a name.instead, it is assigned to a variable, which act as its name.
+   * All the functions seen in the Named function can be used as Anonymous/Nameless function
+   Syntax: let variable = function(parameter):
+	    {
+	      block of code
+	    }
+
+	  variable (argument);
+ i.e. * let fun = function (morning: string): void 
+         {
+	   console.log(morning);
+         };
+	fun ("good Morning");
+      * let optional = function (...element: (number|string) []): number
+         {
+           return element.length;
+          }
+         console.log(optional ('john',23,25,'solomon',22,28));
+---------------------------------------------------------------------------------------------------------------
+
+Arrow/Lambda Function:
+  * Arrow function are part of anonymous functions.
+  * they doesn't have a name and can be stored into a variable.
+  * All the functions seen in the Named function can be used in Arrow/Lambda function
+Syntax: let variable = (parameter) => 
+         {
+	  block of code
+	   }
+	variable ();
+
+	=> : it called as 'goes to operator'
+ i.e. * let fun =(morning: string): void => 
+         {
+	   console.log(morning);
+         };
+	fun ("good Morning");
+
+      * let optional = (...element: (number|string) []): number =>
+         {
+           return element.length;
+          }
+         console.log(optional ('john',23,25,'solomon',22,28);
+      * let optional = (...element: (number|string) []): number => element.length;
+         console.log(optional ('john',23,25,'solomon',22,28);
+      * let addition =  (a: number, b: number): void => console.log(a + b);
+	addition(25, 85);
+	addition(205, 875);
+	addition(8, 8);
+	 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+
+
+

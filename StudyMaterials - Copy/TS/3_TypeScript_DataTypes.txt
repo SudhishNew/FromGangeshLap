@@ -1,0 +1,128 @@
+  TypeScript - Data Type
+--------------------------------------------
+ * JavaScript is a dynamically typed programming language, while TypeScript is a statically typed programming language.
+ * once you assigned 'Type' for a variable you cannot reassign any other 'Type'.
+ * TypesScript requires expicitly specify the data type.
+----------------------------------------------------------------------------------------------------------
+i.e. 
+
+JS & TS
+let age = 30;
+console.log(typeof(age)); ----> number
+age = "Thirty";
+console.log(typeof(age)); -----> string
+
+TS
+let age: number = 30; ----> not possible in JS
+console.log(typeof(age)); ----> number
+age = "Thiry"; -----> type error (type 'string' is not assignable to type 'number')
+console.log(typeof(age));
+
+Type Safety:
+  Type safty protects the meaning of the variale so we don't change the type
+
+i.e. 
+     let message = "hi Everyone";
+     let year = 2025;
+     message = "2026";  -----> message must contain string. 2026 is not message. it is a number (year)
+     message = "Hello everyone"; -----> message must contain string. even the value is changed type should not change.
+
+
+data type terminologies:
+------------------------
+ * type / data type
+	let age = 30; -----> '30' is a 'number' data type
+ * annotations
+	let age :number = 30; -----> ':number' is annotation. we explicitly spicify the data type to a variable
+ * type inference
+	let age = 30; -----> typescript will implicitly assign the type to the variale based on value.
+
+primitive,non primitive data types:
+----------------------------------------
+ * primitive date types can store one value in a variable at a time
+	* number - both integers and floting-point(decimal) numbers
+		let age = 24;
+		let percentage = 7.6;
+	* string - alphabets & number used inside 'singleQuote',"doubleQuote",`backtick`
+		let firstName : string = 'martin';   ------> single Quote
+		let middleName : string = "luther";  -------> double quote
+		let Name : string = `${firstName} ${middleName} king jr`;  -----> backtickfor paramiterized string
+	* boolean - two values only stored it is true / fales: (Value : true=1,false=0)
+		let isStudent : boolean = true;
+		let hasJob : boolean = false;
+	* null & undfined
+	  * these are special types for absence of a variable.
+	  * the value of null is null itself.
+	  * if you dont't assign any value for a variable its undefined.
+	  * the time when we declaring a variable we never use these two types.
+		let emptyValue : null = null;
+		let notassigned : undefined = undefined;
+			i.e. let year : number;
+			     console.log(year);   ------> output: undefined
+	* any
+	  * Used to assign any data type for a variable
+	  * type safty got ignored
+	  * loses the benifits for Typescript. so, use coutious
+		let value : any = "Hundred";
+		value = 100;   ---------> Type error ignored
+		value = true;   ---------> Type error ignored
+	* union type
+	  * union is not a keyword of a data type like number, boolean, any
+	  * union is assigning more than one data type to a variable
+	  * Each keyword will be mention after '|' this vertical bar symbol.
+		let id : number | string | null;  -----> restricted within this three type, not like any type
+		id = 12345;
+		id = abc123;
+		id = null;
+	* void
+	  * void is used for function not for variable.
+	  * void is used in the function that don't return anything.
+	  * void is optional to use.
+	
+	* function sum(x: number,y: number):void   ------> used because it doesn't rturn anything
+	  {
+	    console.log(a+b);
+	  }
+	  sum(10,30);
+
+	* function sum(x: number,y: number):number   ------> used because it returns something
+	  {
+	    return(a+b);
+	  }
+	  let result: number = sum(10,30);
+	  console.log(result);
+		
+ * non primitive data type can store multiple value in a variable
+	array, Tuple, class, function, interface, etc...
+
+never    --->  Function never completes normally
+object ---> Any non-primitive object
+Array<T> / T[]  ---> Collection of values
+tuple ---> Fixed-length array with specific types
+enum ---> Named constant values
+interface  ---> Custom object structure
+type ---> Custom type alias
+Promise<T> ---> Future value from async operations
+
+Mutablity:
+ * Mutable means data can be changed after creation.
+ * Immutable means data cannot be changed; a new value/object must be created instead.
+
+string - Immutable
+number - Immutable
+boolean - Immutable
+object - Mutable
+array - Mutable
+
+
+
+
+
+
+
+
+
+
+
+
+

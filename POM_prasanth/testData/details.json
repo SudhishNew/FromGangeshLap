@@ -1,0 +1,11 @@
+{
+"data":{
+
+    "URL":"https://www.saucedemo.com/",
+    "userName": "standard_user",
+    "password":"secret_sauce",
+    "firstName": "prasanth",
+    "lastName" : "Harish",
+    "pinCode" :"600091"
+}
+}
